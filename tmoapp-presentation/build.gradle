@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    def androidVersions = rootProject.ext.android
+    compileSdkVersion androidVersions.compileSdkVersion
+    buildToolsVersion androidVersions.buildToolsVersion
+    defaultConfig {
+        applicationId "com.tmobile.pr.mytmobile"
+        minSdkVersion androidVersions.minSdkVersion
+        targetSdkVersion androidVersions.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+
+    // Android
+    implementation commonDependencies.supportAppCompatV7
+    implementation commonDependencies.supportV13
+    implementation commonDependencies.supportAnnotation
+    implementation commonDependencies.supportCardView
+    implementation commonDependencies.supportRecyclerView
+    implementation commonDependencies.constraintLayout
+    implementation commonDependencies.supportDesign
+
+    // Dagger 2
+    implementation commonDependencies.dagger2
+    annotationProcessor commonDependencies.dagger2Compiler
+    testAnnotationProcessor commonDependencies.dagger2Compiler
+    compileOnly commonDependencies.javaxAnnotation
+
+    // Architecture components
+    api commonDependencies.archLifecycleRuntime
+    api commonDependencies.archLifecycleExtensions
+    api commonDependencies.archLifecycleReactiveStreams
+    annotationProcessor commonDependencies.archLifecycleCompiler
+    testAnnotationProcessor commonDependencies.archLifecycleCompiler
+
+    // RxJava 2
+    implementation commonDependencies.rxJava2
+    implementation commonDependencies.rxAndroid
+
+    // Networking
+    implementation commonDependencies.okHttp
+    implementation commonDependencies.okHttpInterceptor
+
+    // Picasso
+    implementation commonDependencies.picasso
+
+    // Networking Retrofit
+    implementation commonDependencies.retrofit2
+    implementation commonDependencies.retrofitRxAdapter
+    implementation commonDependencies.retrofitConverter
+
+    // Gson
+    implementation commonDependencies.gson
+}
