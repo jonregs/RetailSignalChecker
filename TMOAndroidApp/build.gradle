@@ -3,7 +3,7 @@ apply from: 'buildsystem/dependencies.gradle'
 apply from: 'buildsystem/configurations.gradle'
 
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
@@ -19,6 +19,11 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = "1.7"
+        targetCompatibility = "1.7"
     }
 }
 

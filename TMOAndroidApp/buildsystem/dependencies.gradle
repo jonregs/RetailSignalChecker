@@ -7,95 +7,116 @@ allprojects {
 }
 
 ext {
-    // Libraries
-    rxJava2 = '2.1.0'
-    rxAndroid = '2.0.1'
-    archLifecycle = '1.0.0-alpha9'
-    supportLibrary = '26.0.0'
-    constraintLayout = '1.0.2'
-    dagger2 = '2.11'
-    javaxAnnotation = '10.0-b28'
-    picasso = '2.5.2'
-    calligraphy = '2.3.0'
-    lottie = '2.0.0'
-    okHttp = '3.8.0'
-    retrofit2 = '2.3.0'
-    gson = '2.8.1'
-    autoValue = '1.4.1'
-    autoValueGson = '0.5.0'
-    options = '1.3.0'
-    roomVersion = '1.0.0-alpha4'
+    //Libraries
+    daggerVersion = '2.11'
+    butterKnifeVersion = '7.0.1'
+    recyclerViewVersion = '21.0.3'
+    cardViewVersion = '21.0.+'
+    rxJavaVersion = '2.0.2'
+    rxAndroidVersion = '2.0.1'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    gsonVersion = '2.8.1'
+    okHttpVersion = '2.5.0'
+    androidAnnotationsVersion = '21.0.3'
+    arrowVersion = '1.0.0'
+    archVersion = '1.0.0-alpha9-1'
+    supportLibraryVersion = '26.1.0'
+    retrofitVersion = '2.3.0'
+    timberVersion = '4.5.1'
 
-    // Instrumentation
-    stetho = '1.5.0'
-    chuck = '1.0.4'
-    leakCanary = '1.5.1'
+    //Testing
+    robolectricVersion = '3.1.1'
+    jUnitVersion = '4.12'
+    assertJVersion = '1.7.1'
+    mockitoVersion = '1.9.5'
+    dexmakerVersion = '1.0'
+    espressoVersion = '2.0'
+    testingSupportLibVersion = '0.1'
 
-    // Testing
-    junit = '4.12'
-    mockito = '2.8.9'
-    assertJ = '3.8.0'
+    //Development
+    leakCanaryVersion = '1.3.1'
 
-    commonDependencies = [
-            rxJava2                     : "io.reactivex.rxjava2:rxjava:${rxJava2}",
-            rxAndroid                   : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
-
-            dagger2Compiler             : "com.google.dagger:dagger-compiler:${dagger2}",
-            dagger2                     : "com.google.dagger:dagger:${dagger2}",
-            javaxAnnotation             : "org.glassfish:javax.annotation:${javaxAnnotation}",
-
-            supportAppCompatV7          : "com.android.support:appcompat-v7:${supportLibrary}",
-            supportDesign               : "com.android.support:design:${supportLibrary}",
-            supportV13                  : "com.android.support:support-v13:${supportLibrary}",
-            supportAnnotation           : "com.android.support:support-annotations:${supportLibrary}",
-            supportCardView             : "com.android.support:cardview-v7:${supportLibrary}",
-            supportRecyclerView         : "com.android.support:recyclerview-v7:${supportLibrary}",
-            constraintLayout            : "com.android.support.constraint:constraint-layout:${constraintLayout}",
-
-            calligraphy                 : "uk.co.chrisjenx:calligraphy:${calligraphy}",
-
-            roomRuntime                 : "android.arch.persistence.room:runtime:${roomVersion}",
-            roomCompiler                : "android.arch.persistence.room:compiler:${roomVersion}",
-            roomTesting                 : "android.arch.persistence.room:testing:${roomVersion}",
-
-            archLifecycleRuntime        : "android.arch.lifecycle:runtime:${archLifecycle}",
-            archLifecycleExtensions     : "android.arch.lifecycle:extensions:${archLifecycle}",
-            archLifecycleReactiveStreams: "android.arch.lifecycle:reactivestreams:${archLifecycle}",
-            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archLifecycle}",
-
-            autoValue                   : "com.google.auto.value:auto-value:${autoValue}",
-            autoValueGson               : "com.ryanharter.auto.value:auto-value-gson:${autoValueGson}",
-
-            options                     : "com.github.tomaszpolanski:options:${options}",
-
-            lottie                      : "com.airbnb.android:lottie:${lottie}",
-
-            okHttp                      : "com.squareup.okhttp3:okhttp:${okHttp}",
-            okHttpInterceptor           : "com.squareup.okhttp3:logging-interceptor:${okHttp}",
-            picasso                     : "com.squareup.picasso:picasso:${picasso}",
-
-            retrofit2                   : "com.squareup.retrofit2:retrofit:${retrofit2}",
-            retrofitRxAdapter           : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2}",
-            retrofitConverter           : "com.squareup.retrofit2:converter-gson:${retrofit2}",
-
-            gson                        : "com.google.code.gson:gson:${gson}",
+    presentationDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            daggerAndroid:      "com.google.dagger:dagger-android:${daggerVersion}",
+            daggerAndroidSupport: "com.google.dagger:dagger-android-support:${daggerVersion}",
+            cardView:           "com.android.support:cardview-v7:${cardViewVersion}",
+            daggerProcessor:    "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
+            recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            archRuntime:        "android.arch.lifecycle:runtime:${archVersion}",
+            archExtensions:     "android.arch.lifecycle:extensions:${archVersion}",
+            archCompiler:       "android.arch.lifecycle:compiler:${archVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${supportLibraryVersion}",
+            androidSupportV4:   "com.android.support:support-v4:${supportLibraryVersion}",
+            androidSupportV13:  "com.android.support:support-v13:${supportLibraryVersion}",
+            appCompatV7:        "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            supportRecyclerView:"com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            supportDesign:      "com.android.support:design:${supportLibraryVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}"
     ]
 
-    commonTestDependencies = [
-            junit   : "junit:junit:${junit}",
-            assertj : "org.assertj:assertj-core:${assertJ}",
-            mockito : "org.mockito:mockito-core:${mockito}",
-            archTest: "android.arch.core:core-testing:${archLifecycle}"
+    presentationTestDependencies = [
+            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+            dexmaker:           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+            dexmakerMockito:    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+            espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            testingSupportLib:  "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+    ]
+
+    domainDependencies = [
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            arrow:              "com.fernandocejas:arrow:${arrowVersion}"
+    ]
+
+    domainTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}"
+    ]
+
+    dataDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            okHttp:             "com.squareup.okhttp:okhttp:${okHttpVersion}",
+            gson:               "com.google.code.gson:gson:${gsonVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}"
+    ]
+
+    dataTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+    ]
+
+    remoteDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            gson:               "com.google.code.gson:gson:${gsonVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            okHttp:             "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
     ]
 
     developmentDependencies = [
-            leakcanary    : "com.squareup.leakcanary:leakcanary-android:${leakCanary}",
-            leakcanaryNoOp: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanary}",
-
-            stetho        : "com.facebook.stetho:stetho:${stetho}",
-            stethoOkHttp  : "com.facebook.stetho:stetho-okhttp3:${stetho}",
-
-            chuck         : "com.readystatesoftware.chuck:library:${chuck}",
-            chuckNoOp     : "com.readystatesoftware.chuck:library-no-op:${chuck}"
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
     ]
 }

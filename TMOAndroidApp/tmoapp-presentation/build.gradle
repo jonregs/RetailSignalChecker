@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+project.ext {
+    appcompat = "25.3.1"
+    arch = "1.0.0-alpha1"
+    retrofit = "2.0.2"
+    constraintLayout = "1.0.2"
+    dagger_version = "2.11"
+}
 android {
     def androidVersions = rootProject.ext.android
     compileSdkVersion androidVersions.compileSdkVersion
@@ -11,6 +18,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
     buildTypes {
         release {
@@ -18,52 +31,69 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
     productFlavors {
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'            //Some libraries have issues with this.
+        disable 'OldTargetApi'
+        //Lint gives this warning but SDK 20 would be Android L Beta.
+        disable 'IconDensities'             //For testing purpose. This is safe to remove.
+        disable 'IconMissingDensityFolder'  //For testing purpose. This is safe to remove.
     }
 }
 
 dependencies {
-    def commonDependencies = rootProject.ext.commonDependencies
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
 
-    // Android
-    compile commonDependencies.supportAppCompatV7
-    compile commonDependencies.supportV13
-    compile commonDependencies.supportAnnotation
-    compile commonDependencies.supportCardView
-    compile commonDependencies.supportRecyclerView
-    compile commonDependencies.constraintLayout
-    compile commonDependencies.supportDesign
+    compile project(':tmoapp-domain')
+    compile project(':tmoapp-data')
 
-    // Dagger 2
-    compile commonDependencies.dagger2
-    annotationProcessor commonDependencies.dagger2Compiler
-    testAnnotationProcessor commonDependencies.dagger2Compiler
-    compile commonDependencies.javaxAnnotation
+    compile presentationDependencies.dagger
+    compile presentationDependencies.daggerAndroid
+    compile presentationDependencies.daggerAndroidSupport
+    annotationProcessor presentationDependencies.daggerCompiler
+    annotationProcessor presentationDependencies.daggerProcessor
+    compile presentationDependencies.androidAnnotations
+    compile presentationDependencies.androidSupportV4
+    compile presentationDependencies.androidSupportV13
+    compile presentationDependencies.appCompatV7
+    compile presentationDependencies.supportRecyclerView
+    compile presentationDependencies.cardView
+    compile presentationDependencies.supportDesign
+    compile presentationDependencies.butterKnife
+    compile presentationDependencies.recyclerView
+    compile presentationDependencies.rxJava
+    compile presentationDependencies.rxAndroid
+    provided presentationDependencies.javaxAnnotation
+    compile presentationDependencies.archRuntime
+    compile presentationDependencies.archExtensions
+    compile presentationDependencies.timber
+    androidTestCompile presentationTestDependencies.mockito
+    androidTestCompile presentationTestDependencies.dexmaker
+    androidTestCompile presentationTestDependencies.dexmakerMockito
+    androidTestCompile presentationTestDependencies.espresso
+    androidTestCompile presentationTestDependencies.testingSupportLib
 
-    // Architecture components
-    compile commonDependencies.archLifecycleRuntime
-    compile commonDependencies.archLifecycleExtensions
-    compile commonDependencies.archLifecycleReactiveStreams
-    annotationProcessor commonDependencies.archLifecycleCompiler
-    testAnnotationProcessor commonDependencies.archLifecycleCompiler
-
-    // RxJava 2
-    compile commonDependencies.rxJava2
-    compile commonDependencies.rxAndroid
-
-    // Networking
-    compile commonDependencies.okHttp
-    compile commonDependencies.okHttpInterceptor
-
-    // Picasso
-    compile commonDependencies.picasso
-
-    // Networking Retrofit
-    compile commonDependencies.retrofit2
-    compile commonDependencies.retrofitRxAdapter
-    compile commonDependencies.retrofitConverter
-
-    // Gson
-    compile commonDependencies.gson
+    //Development
+    compile developmentDependencies.leakCanary
 }
