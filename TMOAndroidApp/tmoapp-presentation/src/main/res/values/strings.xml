@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TMOAndroidApp</string>
+    <string name="my_account">My Account</string>
+    <string name="my_bill">My Bill</string>
+    <string name="shop">Shop</string>
+    <string name="more">More</string>
 </resources>
