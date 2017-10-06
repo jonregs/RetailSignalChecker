@@ -3,18 +3,40 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
+    android:id="@+id/global_header"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
+    android:background="?attr/colorPrimary"
     app:contentInsetStart="@dimen/padding_normal"
     app:layout_collapseMode="pin"
+    android:paddingRight="10dp"
     app:popupTheme="@style/ThemeOverlay.ToolbarPopup">
+
+
+
+    <ImageView
+        android:id="@+id/home_icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:src="@drawable/ic_home_button_icon"
+        android:tag="@string/home"
+        android:layout_gravity="start"
+        />
 
     <TextView
         android:id="@+id/toolbar_title"
         style="@style/ProductSans.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/app_name" />
+        tools:text="@string/app_name"
+        android:layout_gravity="center"/>
+    <ImageView
+        android:id="@+id/message_icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:src="@drawable/ic_message_button_icon"
+        android:tag="@string/message_icon"
+        android:layout_gravity="end"
+        />
 
 </android.support.v7.widget.Toolbar>
