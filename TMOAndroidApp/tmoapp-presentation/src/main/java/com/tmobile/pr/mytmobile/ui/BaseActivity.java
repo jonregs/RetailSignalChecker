@@ -18,25 +18,136 @@
 
 package com.tmobile.pr.mytmobile.ui;
 
-import android.arch.lifecycle.LifecycleActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.tmobile.pr.mytmobile.R;
 
 /**
  * A base activity that handles common functionality in the app.
  * Created by Srikanth Roopa on 09/29/2017
  */
 //TODO Implement the common functionalities like toolbar customization, material bottomnavigationview in the base activity.
-public abstract class BaseActivity extends LifecycleActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
-  @Override
-  protected void onCreate(@Nullable final Bundle savedInstanceState) {
-    setContentView(getLayoutId());
-    super.onCreate(savedInstanceState);
-  }
+    private Toolbar toolbar;
+    private ImageView homeIcon;
+    private ImageView messageIcon;
+    private TextView toolbarTitle;
 
-  @LayoutRes
-  protected abstract int getLayoutId();
+    @Override
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
+        setContentView(getLayoutId());
+        super.onCreate(savedInstanceState);
+        getToolbar();
+        getHomeIcon();
+        getMessageIcon();
+        getToolbarTitle();
+        setUpIcons();
+    }
+
+    @LayoutRes
+    protected abstract int getLayoutId();
+
+    private Toolbar getToolbar() {
+        if (toolbar == null) {
+            toolbar = findViewById(R.id.global_header);
+            if (toolbar != null) {
+                setSupportActionBar(toolbar);
+                // We use our own toolbar title, so hide the default one
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                toolbar.getBackground().setAlpha(0);
+            }
+        }
+        return toolbar;
+    }
+
+    private void setUpIcons() {
+
+    /*homeIcon.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), R.string.home_navigate, Toast.LENGTH_SHORT).show();
+      }
+    });
+
+
+    messageIcon.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), R.string.customer_navigate, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+      }
+    });*/
+
+        //TODO change from child activity
+        //changeToolbarIconColor(R.color.magenta);
+    }
+
+    protected View getHomeIcon() {
+        if (toolbar == null)
+            getToolbar();
+        if (homeIcon == null)
+            homeIcon = findViewById(R.id.home_icon);
+        return homeIcon;
+    }
+
+    protected View getMessageIcon() {
+        if (toolbar == null)
+            getToolbar();
+        if (homeIcon == null)
+            messageIcon = findViewById(R.id.message_icon);
+        return messageIcon;
+    }
+
+    protected View getToolbarTitle(){
+       if (toolbar == null)
+           getToolbar();
+        toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        if (toolbarTitle != null) {
+            int titleId = getNavigationTitleId();
+            if (titleId != 0) {
+                toolbarTitle.setText(titleId);
+            }
+        }
+        return toolbarTitle;
+    }
+
+    protected int getNavigationTitleId() {
+        return 0;
+    }
+
+    /**
+     * Change the color of Icons in toolbar
+     *
+     * @param color int value of color resource
+     */
+    private void changeToolbarIconColor(@ColorRes int color) {
+        int tint = ContextCompat.getColor(this, color);
+        changeVectorColor(homeIcon.getDrawable(), tint);
+        changeVectorColor(messageIcon.getDrawable(), tint);
+    }
+
+    /**
+     * Change color of drawable based on color
+     *
+     * @param drawable
+     * @param color
+     */
+    public void changeVectorColor(Drawable drawable, int color) {
+        DrawableCompat.setTint(drawable, color);
+    }
 
 }
