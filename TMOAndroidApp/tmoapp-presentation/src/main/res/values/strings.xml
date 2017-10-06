@@ -8,6 +8,7 @@
 
     <!--Header/Toolbar-->
     <string name="hello">Hello</string>
+
     <string name="welcome_text">Welcome to the T-Mobile app</string>
     <string name="message_icon">Messaging Icon</string>
     <string name="home">Home</string>

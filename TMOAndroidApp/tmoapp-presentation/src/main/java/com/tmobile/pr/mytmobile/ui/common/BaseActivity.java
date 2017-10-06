@@ -61,7 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity {
       if (toolbar != null) {
         Timber.i(TAG, "Toolbar:"+toolbar);
         setSupportActionBar(toolbar);
-        // We use our own mToolbar title, so hide the default one
+
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.getBackground().setAlpha(0);
         getHomeIcon();
@@ -97,11 +98,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     //setToolbarIconColor(R.color.magenta);
   }
 
+
   protected View getHomeIcon() {
     if (homeIcon == null)
       homeIcon = findViewById(R.id.home_icon);
     return homeIcon;
   }
+
+
 
   protected View getMessageIcon() {
     if (homeIcon == null)
@@ -125,7 +129,8 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   /**
-   * Change the color of Icons in mToolbar
+
+   * Change the color of Icons in toolbar
    *
    * @param color int value of color resource
    */
