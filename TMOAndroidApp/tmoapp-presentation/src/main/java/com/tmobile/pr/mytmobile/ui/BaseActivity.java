@@ -18,13 +18,25 @@
 
 package com.tmobile.pr.mytmobile.ui;
 
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tmobile.pr.mytmobile.ui.common.BaseToolbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.tmobile.pr.mytmobile.R;
 
 /**
  * A base activity that handles common functionality in the app.
@@ -42,6 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         super.onCreate(savedInstanceState);
         initToolbar(setUpToolbar());
+
     }
 
     @LayoutRes
@@ -63,6 +76,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
-
 
 }

@@ -6,14 +6,9 @@
   android:layout_height="match_parent"
   tools:context="com.tmobile.pr.mytmobile.ui.MainActivity">
 
-
-
     <!-- Toolbar is the actual app bar with text and the action items -->
     <include
         layout="@layout/toolbar"/>
-
-
-    <!--app:layout_scrollFlags="scroll|enterAlways" -->
 
   <FrameLayout
       android:id="@+id/fragment_container"
