@@ -1,8 +1,15 @@
 package com.tmobile.pr.mytmobile.home;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.util.Pair;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tmobile.pr.mytmobile.R;
+import com.tmobile.pr.mytmobile.message.MessageActivity;
+import com.tmobile.pr.mytmobile.model.Model;
 import com.tmobile.pr.mytmobile.ui.BaseActivity;
 
 import java.util.ArrayList;
@@ -20,8 +29,9 @@ import java.util.List;
  * Created by asaifudeen on 10/1/17.
  */
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity{
 
+    private static final String TAG = BaseActivity.class.getSimpleName();
     private TabLayout tabLayout;
     private TabLayout.Tab tab;
     private TextView textFlipper;
@@ -31,9 +41,31 @@ public class HomeActivity extends BaseActivity {
     private List<String> optionDestination = new ArrayList<>();
     private HashMap<String, String> footerHash = new HashMap<>();
     private Pair<String, String> option;
+
+    //Hello World Card and scrolling effect for mToolbar
+    private RecyclerView recyclerView;
+    private HomeCardAdapter myAdapter;
+    private RecyclerViewScrollListener scrollListener;
+
+    private float computedValue;
+    private float cardHeight;
+    private float scrollY;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_home;
+    }
+
+    @Override
+    protected boolean setUpToolbar() {
+        return true;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+
+
     }
 
     @Override
@@ -54,6 +86,10 @@ public class HomeActivity extends BaseActivity {
         //optionDestination.add("WOO");
 
         fillTabLayout(optionList, optionDestination);
+
+        //Change Icon color of toolbar
+        mToolbar.setToolbarIconColor(R.color.magenta);
+
     }
 
 
