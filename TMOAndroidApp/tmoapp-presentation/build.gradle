@@ -92,7 +92,7 @@ dependencies {
     androidTestCompile presentationTestDependencies.dexmaker
     androidTestCompile presentationTestDependencies.dexmakerMockito
     androidTestCompile presentationTestDependencies.espresso
-    androidTestCompile presentationTestDependencies.espressoIntents
+//    androidTestCompile presentationTestDependencies.espressoIntents
 
 //    androidTestCompile presentationTestDependencies.testingSupportLib
     androidTestCompile presentationDependencies.androidAnnotations
