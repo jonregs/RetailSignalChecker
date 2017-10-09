@@ -45,7 +45,6 @@ public class HomeActivity extends BaseActivity{
     //Hello World Card and scrolling effect for mToolbar
     private RecyclerView recyclerView;
     private HomeCardAdapter myAdapter;
-    private RecyclerViewScrollListener scrollListener;
 
     private float computedValue;
     private float cardHeight;
