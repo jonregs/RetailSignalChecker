@@ -2,7 +2,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven { url "https://jitpack.io"}
+        maven { url "https://maven.google.com"}
     }
 }
 
@@ -66,6 +67,7 @@ ext {
             dexmaker:           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
             dexmakerMockito:    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
             espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            espressoIntent:     "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
             gson:               "com.google.code.gson:gson:${gsonVersion}",
             testingSupportLib:  "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
     ]
