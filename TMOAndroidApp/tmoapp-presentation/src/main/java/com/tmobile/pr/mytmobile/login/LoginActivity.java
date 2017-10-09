@@ -17,6 +17,11 @@ public class LoginActivity extends BaseActivity {
         return R.layout.activity_login;
     }
 
+    @Override
+    protected boolean setUpToolbar() {
+        return false;
+    }
+
     public void onLoginClicked(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
