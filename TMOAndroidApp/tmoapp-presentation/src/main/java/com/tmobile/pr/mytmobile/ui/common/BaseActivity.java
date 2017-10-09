@@ -28,6 +28,7 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -91,12 +92,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+
       }
     });*/
 
         //TODO change from child activity
         //setToolbarIconColor(R.color.magenta);
     }
+
 
     protected View getHomeIcon() {
         if (homeIcon == null)

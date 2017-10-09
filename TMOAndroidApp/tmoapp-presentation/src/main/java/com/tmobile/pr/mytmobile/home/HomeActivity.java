@@ -202,6 +202,8 @@ public class HomeActivity extends BaseActivity{
     }
 
 
+
+
     private class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
