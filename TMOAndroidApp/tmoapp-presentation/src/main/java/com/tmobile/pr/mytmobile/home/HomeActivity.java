@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.ui.BaseActivity;
@@ -63,7 +64,7 @@ public class HomeActivity extends BaseActivity {
     TODO: destination: where each option will go (right now it is assuming a url) NEEDS CLARIFICATION
 
      */
-    private void fillTabLayout(List<String> options, List<String> destination) {
+    private void fillTabLayout(final List<String> options, List<String> destination) {
         for (int i = 0; i < optionList.size(); i++) {
             View v = LayoutInflater.from(this).inflate(R.layout.custom_footer_item_layout, null);
             textFlipper = (TextView) v.findViewById(R.id.txtCustomFooterText);
@@ -72,9 +73,9 @@ public class HomeActivity extends BaseActivity {
             v.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             tab = tabLayout.newTab().setCustomView(v).setTag(destination.get(i));
             textFlipper.setSingleLine();
-            divider = (View) v.findViewById(R.id.divider);
 
-//                divider.setVisibility(i == 0?View.GONE:View.VISIBLE);
+            divider = (View) v.findViewById(R.id.divider);
+            divider.setVisibility(i == 0 ? View.GONE : View.VISIBLE);
 
             tabLayout.addTab(tab);
         }
@@ -88,6 +89,7 @@ public class HomeActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
                 tab.getCustomView().setBackgroundColor(getResources().getColor(R.color.grey));
+                Toast.makeText(getApplicationContext(),options.get(tab.getPosition()),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -99,9 +101,10 @@ public class HomeActivity extends BaseActivity {
             public void onTabReselected(TabLayout.Tab tab) {
                 tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
                 tab.getCustomView().setBackgroundColor(getResources().getColor(R.color.grey));
+                Toast.makeText(getApplicationContext(),options.get(tab.getPosition()),Toast.LENGTH_SHORT).show();
+
             }
         });
     }
-
 
 }
