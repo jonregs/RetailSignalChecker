@@ -18,6 +18,7 @@
 
 package com.tmobile.pr.mytmobile.ui;
 
+
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -63,6 +64,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
-
 
 }
