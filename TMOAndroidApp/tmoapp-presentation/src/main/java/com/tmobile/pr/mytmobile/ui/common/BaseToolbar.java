@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tmobile.pr.mytmobile.AnalyticsModel;
 import com.tmobile.pr.mytmobile.R;
+
+import timber.log.Timber;
 
 /**
  * Wrapper class for toolbar
@@ -19,13 +22,15 @@ import com.tmobile.pr.mytmobile.R;
  * Created by Mukesh on 10/7/2017.
  */
 
-public class BaseToolbar{
+public class BaseToolbar {
     private Toolbar toolbar;
+    private ToolbarClickListener listener;
     private AppCompatActivity context;
 
     private ImageView homeIcon;
     private ImageView messageIcon;
     private TextView toolbarTitle;
+    private AnalyticsModel analyticsModel;
 
     public BaseToolbar(AppCompatActivity appCompatActivity) {
         this.context = appCompatActivity;
@@ -34,9 +39,10 @@ public class BaseToolbar{
 
     /**
      * Initialise and return toolbar
+     *
      * @return
      */
-    public Toolbar getToolbar(){
+    public Toolbar getToolbar() {
         if (toolbar == null) {
             toolbar = context.findViewById(R.id.global_header);
             toolbar.getBackground().setAlpha(0);
@@ -44,16 +50,55 @@ public class BaseToolbar{
             getHomeIcon();
             getMessageIcon();
             getToolbarTitle();
+            setHomeClickListener();
+            setMessageClickListener();
         }
         return toolbar;
     }
 
+    private void setMessageClickListener() {
+        getMessageIcon().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null)
+                    listener.onMessageIconClick();
+                analyticsModel = new AnalyticsModel();
+                analyticsModel.setHeader_id("global_header");
+                analyticsModel.setUi_element_type("header");
+                analyticsModel.setIcon_id("messaging_icon");
+                analyticsModel.setIcon_name("Messaging Icon");
+                analyticsModel.setUi_element_type("icon");
+                analyticsModel.setElement_location("header");
+
+            }
+        });
+    }
+
+    private void setHomeClickListener() {
+        getHomeIcon().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null)
+                    listener.onHomeIconClick();
+                analyticsModel = new AnalyticsModel();
+                analyticsModel.setHeader_id("global_header");
+                analyticsModel.setUi_element_type("header");
+                analyticsModel.setIcon_id("home_icon");
+                analyticsModel.setIcon_name("Home");
+                analyticsModel.setUi_element_type("icon");
+                analyticsModel.setElement_location("header");
+            }
+        });
+
+    }
+
     /**
      * Initialise and return Home Icon for toolbar
+     *
      * @return
      */
     public View getHomeIcon() {
-        if (homeIcon == null){
+        if (homeIcon == null) {
             homeIcon = context.findViewById(R.id.home_icon);
         }
         return homeIcon;
@@ -61,6 +106,7 @@ public class BaseToolbar{
 
     /**
      * Initialise and return Message Icon for toolbar
+     *
      * @return
      */
     public View getMessageIcon() {
@@ -71,9 +117,10 @@ public class BaseToolbar{
 
     /**
      * Initialise and return Title for toolbar
+     *
      * @return
      */
-    public TextView getToolbarTitle(){
+    public TextView getToolbarTitle() {
         if (toolbarTitle == null) {
             toolbarTitle = context.findViewById(R.id.toolbar_title);
             int titleId = getNavigationTitleId();
@@ -89,7 +136,7 @@ public class BaseToolbar{
     }
 
     /**
-     * Change the color of Icons in mToolbar
+     * Change the color of Icons in toolbar
      *
      * @param color int value of color resource
      */
@@ -109,11 +156,17 @@ public class BaseToolbar{
         DrawableCompat.setTint(drawable, color);
     }
 
-    public void setBackgroundOpacity(int opacity){
+    public void setBackgroundOpacity(int opacity) {
         getToolbar().getBackground().mutate().setAlpha(opacity);
     }
-    /*public interface OnClickListener{
+
+    public void setListener(ToolbarClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ToolbarClickListener {
         void onHomeIconClick();
+
         void onMessageIconClick();
-    }*/
+    }
 }

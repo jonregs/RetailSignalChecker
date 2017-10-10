@@ -5,34 +5,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.tmobile.pr.mytmobile.home.HomeActivity">
 
     <!-- AppBarLayout is a wrapper for a Toolbar in order to apply scrolling effects. -->
     <!-- Note that AppBarLayout expects to be the first child nested within a CoordinatorLayout -->
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <!-- Toolbar is the actual app bar with text and the action items -->
-        <include
-            layout="@layout/toolbar"/>
+
 
         <!--app:layout_scrollFlags="scroll|enterAlways" -->
-    </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:clipToPadding="false" />
+      <FrameLayout
+          android:id="@+id/fragment_container"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_above="@+id/home_footer"
+          />
+        <include
+            layout="@layout/toolbar"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/home_footer"
@@ -40,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
             app:tabPaddingStart="-1dp"
             app:tabPaddingEnd="-1dp"
             app:tabIndicatorColor="@color/magenta"
@@ -49,6 +45,6 @@
             app:tabSelectedTextColor="@color/white"
             app:tabTextColor="@color/white"/>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
