@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.tmobile.pr.mytmobile.AnalyticsModel;
 import com.tmobile.pr.mytmobile.R;
 
-import timber.log.Timber;
-
 /**
  * Wrapper class for toolbar
  * Includes All toolbar specific functions

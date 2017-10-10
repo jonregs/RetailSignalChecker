@@ -3,6 +3,7 @@ package com.tmobile.pr.mytmobile.ui;
 import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.databinding.UserItemBinding;
 import com.tmobile.pr.mytmobile.model.UserModel;

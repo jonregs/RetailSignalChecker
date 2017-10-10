@@ -5,7 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.content.ContextCompat;
 
-import com.prokarma.mytmob.activity.HomeActivity;
+import com.tmobile.pr.mytmobile.home.HomeActivity;
 import com.tmobile.pr.mytmobile.message.MessageActivity;
 
 import org.junit.Rule;
@@ -16,13 +16,15 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.intent.Intents.intended;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static com.android.support.test.deps.guava.base.CharMatcher.is;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.Is.is;
+import static org.mockito.AdditionalMatchers.not;
+
 
 @RunWith(AndroidJUnit4.class)
 public class HeaderInstrumentationTest extends BaseTest {
@@ -40,7 +42,7 @@ public class HeaderInstrumentationTest extends BaseTest {
     @Test
     public void helloCardTest() {
         ViewInteraction textView = onView(withId(R.id.card_body)).check(matches(isDisplayed()));
-        textView.check(matches(withText("Welcome to the T-Mobile app")))
+        textView.check(matches(withText("Welcome to the T-Mobile app")));
 
 
         ViewInteraction textView2 = onView(withId(R.id.card_title)).check(matches(isDisplayed()));

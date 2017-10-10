@@ -1,8 +1,8 @@
 package com.tmobile.pr.mytmobile.message;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.home.HomeActivity;

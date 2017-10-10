@@ -1,7 +1,6 @@
 package com.tmobile.pr.mytmobile;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 /**
  * Created by asaifudeen on 10/9/17.

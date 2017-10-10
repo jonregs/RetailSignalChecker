@@ -4,11 +4,13 @@ package com.tmobile.pr.mytmobile.data.net;
 import com.tmobile.pr.mytmobile.data.entity.UserEntity;
 import com.tmobile.pr.mytmobile.data.entity.mapper.UserEntityJsonMapper;
 import com.tmobile.pr.mytmobile.data.exception.NetworkConnectionException;
+
+import java.net.MalformedURLException;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import java.net.MalformedURLException;
-import java.util.List;
 
 /**
  * {@link RestApi} implementation for retrieving data from the network.

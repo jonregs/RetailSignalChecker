@@ -3,9 +3,12 @@ package com.tmobile.pr.mytmobile.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.ui.common.BaseInjectingActivity;
+
 import javax.inject.Inject;
+
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 

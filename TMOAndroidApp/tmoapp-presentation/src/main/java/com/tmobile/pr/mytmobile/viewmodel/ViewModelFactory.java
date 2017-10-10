@@ -3,11 +3,12 @@ package com.tmobile.pr.mytmobile.viewmodel;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v4.util.ArrayMap;
+
 import com.tmobile.pr.mytmobile.di.ViewModelSubComponent;
-import com.tmobile.pr.mytmobile.domain.model.User;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

@@ -7,11 +7,14 @@ import com.tmobile.pr.mytmobile.data.repository.datasource.UserDataStore;
 import com.tmobile.pr.mytmobile.data.repository.datasource.UserDataStoreFactory;
 import com.tmobile.pr.mytmobile.domain.model.User;
 import com.tmobile.pr.mytmobile.domain.repository.UserRepository;
-import io.reactivex.Observable;
-import io.reactivex.functions.Function;
+
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 /**
  * {@link UserRepository} for retrieving user data.

@@ -18,6 +18,7 @@ package com.tmobile.pr.mytmobile.mapper;
 
 import com.tmobile.pr.mytmobile.domain.model.User;
 import com.tmobile.pr.mytmobile.model.UserModel;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

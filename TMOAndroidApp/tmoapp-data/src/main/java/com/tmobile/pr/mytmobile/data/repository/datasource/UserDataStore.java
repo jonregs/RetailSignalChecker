@@ -3,8 +3,9 @@ package com.tmobile.pr.mytmobile.data.repository.datasource;
 
 import com.tmobile.pr.mytmobile.data.entity.UserEntity;
 
-import io.reactivex.Observable;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Interface that represents a data store from where data is retrieved.

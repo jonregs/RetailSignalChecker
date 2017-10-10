@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.tmobile.pr.mytmobile.ui.BaseActivity;
 import com.tmobile.pr.mytmobile.ui.common.BaseToolbar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import timber.log.Timber;

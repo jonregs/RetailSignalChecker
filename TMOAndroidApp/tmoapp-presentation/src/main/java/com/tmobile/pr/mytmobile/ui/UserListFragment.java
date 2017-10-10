@@ -29,12 +29,15 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.di.Injectable;
 import com.tmobile.pr.mytmobile.model.UserModel;
 import com.tmobile.pr.mytmobile.ui.common.BaseInjectingFragment;
 import com.tmobile.pr.mytmobile.viewmodel.UserListViewModel;
+
 import java.util.List;
+
 import javax.inject.Inject;
 
 public class UserListFragment extends BaseInjectingFragment implements Injectable {

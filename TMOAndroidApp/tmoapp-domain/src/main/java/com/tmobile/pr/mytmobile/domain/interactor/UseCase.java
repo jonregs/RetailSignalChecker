@@ -17,6 +17,7 @@ package com.tmobile.pr.mytmobile.domain.interactor;
 
 import com.tmobile.pr.mytmobile.domain.executor.PostExecutionThread;
 import com.tmobile.pr.mytmobile.domain.executor.ThreadExecutor;
+
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
