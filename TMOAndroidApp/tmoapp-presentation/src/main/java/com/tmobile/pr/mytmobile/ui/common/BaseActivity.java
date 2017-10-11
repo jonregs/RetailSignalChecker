@@ -63,7 +63,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 Timber.i(TAG, "Toolbar:" + toolbar);
                 setSupportActionBar(toolbar);
                 // We use our own toolbar title, so hide the default one
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayShowTitleEnabled(false);
+                }
                 toolbar.getBackground().setAlpha(0);
                 getHomeIcon();
                 getMessageIcon();

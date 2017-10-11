@@ -27,8 +27,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 @RunWith(AndroidJUnit4.class)
 public class LoginTest {
     @Rule
-    public ActivityTestRule<LoginActivity> activityTestRule =
-        new ActivityTestRule<>(LoginActivity.class);
+    public ActivityTestRule<LoginActivity> activityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Before
     public void setUp() throws Exception {
@@ -45,7 +44,6 @@ public class LoginTest {
         onView(withId(R.id.loginIV)).check(matches(isDisplayed()));
         onView(withId(R.id.loginIV)).perform(ViewActions.click());
         intended(hasComponent(HomeActivity.class.getName()));
-
     }
 
 }

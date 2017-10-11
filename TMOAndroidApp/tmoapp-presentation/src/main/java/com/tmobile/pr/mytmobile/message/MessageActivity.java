@@ -17,7 +17,7 @@ public class MessageActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getToolbar().setToolbarIconColor(R.color.black);
-        getToolbar().getToolbarTitle().setText("Chat");
+        getToolbar().getToolbarTitle().setText(R.string.chat);
         getToolbar().setListener(new BaseToolbar.ToolbarClickListener() {
             @Override
             public void onHomeIconClick() {

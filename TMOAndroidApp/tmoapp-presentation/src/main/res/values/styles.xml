@@ -10,11 +10,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="ThemeOverlay.DarkToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar" />
+    <style name="ThemeOverlay.LightToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
-    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light" />
+    <style name="ThemeOverlay.ToolbarPopup" parent="@style/ThemeOverlay.AppCompat.Light"/>
 
     <style name="ProductSans.Title" parent="">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>

@@ -54,7 +54,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             setSupportActionBar(toolbar.getToolbar());
             // We use our own toolbar title, so hide the default one
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
         }
     }
 
@@ -64,7 +66,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract boolean setUpToolbar();
 
+    @Nullable
     public BaseToolbar getToolbar() {
+        if (toolbar == null) {
+            initToolbar(setUpToolbar());
+        }
         return toolbar;
     }
 

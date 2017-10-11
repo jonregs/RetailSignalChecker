@@ -2,6 +2,7 @@ package com.tmobile.pr.mytmobile.ui.common;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +21,9 @@ import com.tmobile.pr.mytmobile.R;
  */
 
 public class BaseToolbar {
+    private final AppCompatActivity context;
     private Toolbar toolbar;
     private ToolbarClickListener listener;
-    private AppCompatActivity context;
-
     private ImageView homeIcon;
     private ImageView messageIcon;
     private TextView toolbarTitle;
@@ -38,6 +38,7 @@ public class BaseToolbar {
      *
      * @param color int value of color resource
      */
+    @Nullable
     public void setToolbarIconColor(@ColorRes int color) {
         int tint = ContextCompat.getColor(context, color);
         setVectorColor(homeIcon.getDrawable(), tint);
@@ -48,7 +49,7 @@ public class BaseToolbar {
      * Change color of drawable based on color
      *
      * @param drawable to change color
-     * @param color to be changed
+     * @param color    to be changed
      */
     public void setVectorColor(Drawable drawable, int color) {
         DrawableCompat.setTint(drawable, color);
@@ -61,7 +62,7 @@ public class BaseToolbar {
     /**
      * Initialise and return toolbar
      *
-     * @return  Toolbar object for appbar
+     * @return Toolbar object for appbar
      */
     public Toolbar getToolbar() {
         if (toolbar == null) {
@@ -80,7 +81,7 @@ public class BaseToolbar {
     /**
      * Initialise and return Home Icon for toolbar
      *
-     * @return  HomeIcon from toolbar
+     * @return HomeIcon from toolbar
      */
     public View getHomeIcon() {
         if (homeIcon == null) {

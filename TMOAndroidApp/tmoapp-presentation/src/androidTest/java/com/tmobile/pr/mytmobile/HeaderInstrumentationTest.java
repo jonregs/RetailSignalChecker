@@ -3,10 +3,8 @@ package com.tmobile.pr.mytmobile;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v4.content.ContextCompat;
 
 import com.tmobile.pr.mytmobile.home.HomeActivity;
-import com.tmobile.pr.mytmobile.home.HomeFragment;
 import com.tmobile.pr.mytmobile.message.MessageActivity;
 
 import org.junit.Rule;
@@ -15,7 +13,6 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
@@ -76,14 +73,6 @@ public class HeaderInstrumentationTest extends BaseTest {
     public void messageIconClickTest() {
         onView(withId(R.id.message_icon)).perform(click());
         intended(hasComponent(MessageActivity.class.getName()));
-       /* onView(withId(R.id.home_icon))
-            .check(matches(withTextColor(ContextCompat.getColor(mActivityRule.getActivity(), R.color.black))));
-        onView(withId(R.id.message_icon))
-            .check(matches(withTextColor(ContextCompat.getColor(mActivityRule.getActivity(), R.color.black))));
-        onView(withId(R.id.toolbar_title))
-            .check(matches(withText("Chat")))
-            .perform(replaceText("New Title"))
-            .check(matches(withTextColor(ContextCompat.getColor(mActivityRule.getActivity(), R.color.black))));*/
     }
 
 }

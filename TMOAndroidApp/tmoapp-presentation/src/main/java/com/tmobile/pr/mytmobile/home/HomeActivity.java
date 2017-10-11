@@ -31,10 +31,10 @@ import timber.log.Timber;
  */
 
 public class HomeActivity extends BaseActivity {
+    private static final int HOME_DIVEDER_INDEX = 1;
+    @Nullable
     private TabLayout tabLayout;
-    private TabLayout.Tab tab;
-    private TextView textFlipper;
-    private View divider;
+
     private List<String> optionList = new ArrayList<>();
     private List<String> optionDestination = new ArrayList<>();
     private FragmentManager fragmentManager;
@@ -75,12 +75,32 @@ public class HomeActivity extends BaseActivity {
         return true;
     }
 
+    private void setUpToolbarListener() {
+        getToolbar().setListener(new BaseToolbar.ToolbarClickListener() {
+            @Override
+            public void onHomeIconClick() {
+                Toast.makeText(getApplicationContext(), R.string.home_navigate, Toast.LENGTH_SHORT).show();
+                tabLayout.getTabAt(0).select();
+            }
+
+            @Override
+            public void onMessageIconClick() {
+                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+
     /*
     * Order is decided by how the options were passed.
     * options list: list of options to be displayed
     * TODO: destination: where each option will go (right now it is assuming a url) NEEDS CLARIFICATION
     */
     private void fillTabLayout(final List<String> options, List<String> destination) {
+        TabLayout.Tab tab;
+        TextView textFlipper;
+        View divider;
         for (int i = 0; i < optionList.size(); i++) {
             View v = LayoutInflater.from(this).inflate(R.layout.custom_footer_item_layout, null);
             textFlipper = v.findViewById(R.id.txtCustomFooterText);
@@ -91,13 +111,13 @@ public class HomeActivity extends BaseActivity {
             textFlipper.setSingleLine();
 
             divider = v.findViewById(R.id.divider);
-            divider.setVisibility(i == 1 ? View.GONE : View.VISIBLE);
+            divider.setVisibility(i == HOME_DIVEDER_INDEX ? View.GONE : View.VISIBLE);
 
             tabLayout.addTab(tab);
         }
 
         ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0).setVisibility(View.GONE);
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.magenta));
 
         /*
         *TODO: Implement the change of Page.
@@ -114,7 +134,9 @@ public class HomeActivity extends BaseActivity {
                     getToolbar().getToolbarTitle().setText(options.get(tab.getPosition()));
                     changeFragment(new Fragment());
                 }
-                tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
+                if (tab.getCustomView() != null) {
+                    tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
+                }
                 AnalyticsModel model = new AnalyticsModel();
                 model.setFooter_id(getResources().getResourceEntryName(tabLayout.getId()));
                 model.setUi_element_type("footer");
@@ -123,29 +145,16 @@ public class HomeActivity extends BaseActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getCustomView().setBackgroundColor(getResources().getColor(R.color.black));
+                if (tab.getCustomView() != null) {
+                    tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.black));
+                }
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
-            }
-        });
-    }
-
-    private void setUpToolbarListener() {
-        getToolbar().setListener(new BaseToolbar.ToolbarClickListener() {
-            @Override
-            public void onHomeIconClick() {
-                Toast.makeText(getApplicationContext(), R.string.home_navigate, Toast.LENGTH_SHORT).show();
-                tabLayout.getTabAt(0).select();
-            }
-
-            @Override
-            public void onMessageIconClick() {
-                Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+                if (tab.getCustomView() != null) {
+                    tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
+                }
             }
         });
     }

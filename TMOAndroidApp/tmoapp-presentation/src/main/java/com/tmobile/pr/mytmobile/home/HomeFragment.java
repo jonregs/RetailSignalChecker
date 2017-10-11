@@ -97,7 +97,6 @@ public class HomeFragment extends BaseInjectingFragment {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
-
         }
 
         @Override

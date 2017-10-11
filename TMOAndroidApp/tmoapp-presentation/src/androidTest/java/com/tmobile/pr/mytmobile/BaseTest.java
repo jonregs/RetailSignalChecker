@@ -22,18 +22,7 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class BaseTest {
-    protected Context appContext;
-
-    @Before
-    public void setUp() {
-        Intents.init();
-        appContext = InstrumentationRegistry.getTargetContext();
-    }
-
-    @After
-    public void tearDown() {
-        Intents.release();
-    }
+    private Context appContext;
 
     /**
      * Custom Matcher for TextView
@@ -58,6 +47,13 @@ public class BaseTest {
         };
     }
 
+    /**
+     * Matcher for getting child at particular position
+     *
+     * @param parentMatcher
+     * @param position
+     * @return
+     */
     public static Matcher<View> childAtPosition(
         final Matcher<View> parentMatcher, final int position) {
 
@@ -78,6 +74,13 @@ public class BaseTest {
         };
     }
 
+    /**
+     * Custom Matcher for matching view with index
+     *
+     * @param matcher
+     * @param index
+     * @return
+     */
     public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
         return new TypeSafeMatcher<View>() {
             int currentIndex = 0;
@@ -94,5 +97,16 @@ public class BaseTest {
                 return matcher.matches(view) && currentIndex++ == index;
             }
         };
+    }
+
+    @Before
+    public void setUp() {
+        Intents.init();
+        appContext = InstrumentationRegistry.getTargetContext();
+    }
+
+    @After
+    public void tearDown() {
+        Intents.release();
     }
 }
