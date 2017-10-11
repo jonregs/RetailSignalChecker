@@ -17,7 +17,6 @@ import com.tmobile.pr.mytmobile.R;
  * Wrapper class for toolbar
  * Includes All toolbar specific functions
  * NOTE : Before instantiating make sure that @layout/toolbar is included in activity_layout.xml
- * Created by Mukesh on 10/7/2017.
  */
 
 public class BaseToolbar {
@@ -32,105 +31,6 @@ public class BaseToolbar {
 
     public BaseToolbar(AppCompatActivity appCompatActivity) {
         this.context = appCompatActivity;
-        //getToolbar();
-    }
-
-    /**
-     * Initialise and return toolbar
-     *
-     * @return
-     */
-    public Toolbar getToolbar() {
-        if (toolbar == null) {
-            toolbar = context.findViewById(R.id.global_header);
-            toolbar.getBackground().setAlpha(0);
-
-            getHomeIcon();
-            getMessageIcon();
-            getToolbarTitle();
-            setHomeClickListener();
-            setMessageClickListener();
-        }
-        return toolbar;
-    }
-
-    private void setMessageClickListener() {
-        getMessageIcon().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null)
-                    listener.onMessageIconClick();
-                analyticsModel = new AnalyticsModel();
-                analyticsModel.setHeader_id("global_header");
-                analyticsModel.setUi_element_type("header");
-                analyticsModel.setIcon_id("messaging_icon");
-                analyticsModel.setIcon_name("Messaging Icon");
-                analyticsModel.setUi_element_type("icon");
-                analyticsModel.setElement_location("header");
-
-            }
-        });
-    }
-
-    private void setHomeClickListener() {
-        getHomeIcon().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null)
-                    listener.onHomeIconClick();
-                analyticsModel = new AnalyticsModel();
-                analyticsModel.setHeader_id("global_header");
-                analyticsModel.setUi_element_type("header");
-                analyticsModel.setIcon_id("home_icon");
-                analyticsModel.setIcon_name("Home");
-                analyticsModel.setUi_element_type("icon");
-                analyticsModel.setElement_location("header");
-            }
-        });
-
-    }
-
-    /**
-     * Initialise and return Home Icon for toolbar
-     *
-     * @return
-     */
-    public View getHomeIcon() {
-        if (homeIcon == null) {
-            homeIcon = context.findViewById(R.id.home_icon);
-        }
-        return homeIcon;
-    }
-
-    /**
-     * Initialise and return Message Icon for toolbar
-     *
-     * @return
-     */
-    public View getMessageIcon() {
-        if (messageIcon == null)
-            messageIcon = context.findViewById(R.id.message_icon);
-        return messageIcon;
-    }
-
-    /**
-     * Initialise and return Title for toolbar
-     *
-     * @return
-     */
-    public TextView getToolbarTitle() {
-        if (toolbarTitle == null) {
-            toolbarTitle = context.findViewById(R.id.toolbar_title);
-            int titleId = getNavigationTitleId();
-            if (titleId != 0) {
-                toolbarTitle.setText(titleId);
-            }
-        }
-        return toolbarTitle;
-    }
-
-    protected int getNavigationTitleId() {
-        return 0;
     }
 
     /**
@@ -147,8 +47,8 @@ public class BaseToolbar {
     /**
      * Change color of drawable based on color
      *
-     * @param drawable
-     * @param color
+     * @param drawable to change color
+     * @param color to be changed
      */
     public void setVectorColor(Drawable drawable, int color) {
         DrawableCompat.setTint(drawable, color);
@@ -158,10 +58,122 @@ public class BaseToolbar {
         getToolbar().getBackground().mutate().setAlpha(opacity);
     }
 
+    /**
+     * Initialise and return toolbar
+     *
+     * @return  Toolbar object for appbar
+     */
+    public Toolbar getToolbar() {
+        if (toolbar == null) {
+            toolbar = context.findViewById(R.id.global_header);
+            toolbar.getBackground().setAlpha(0);
+
+            getHomeIcon();
+            getMessageIcon();
+            getToolbarTitle();
+            setHomeClickListener();
+            setMessageClickListener();
+        }
+        return toolbar;
+    }
+
+    /**
+     * Initialise and return Home Icon for toolbar
+     *
+     * @return  HomeIcon from toolbar
+     */
+    public View getHomeIcon() {
+        if (homeIcon == null) {
+            homeIcon = context.findViewById(R.id.home_icon);
+        }
+        return homeIcon;
+    }
+
+    /**
+     * Initialise and return Message Icon for toolbar
+     *
+     * @return Message Icon from toolbar
+     */
+    public View getMessageIcon() {
+        if (messageIcon == null) {
+            messageIcon = context.findViewById(R.id.message_icon);
+        }
+        return messageIcon;
+    }
+
+    /**
+     * Initialise and return Title for toolbar
+     *
+     * @return Toolbar title TextView
+     */
+    public TextView getToolbarTitle() {
+        if (toolbarTitle == null) {
+            toolbarTitle = context.findViewById(R.id.toolbar_title);
+            int titleId = getNavigationTitleId();
+            if (titleId != 0) {
+                toolbarTitle.setText(titleId);
+            }
+        }
+        return toolbarTitle;
+    }
+
+    /**
+     * Sets homeClickListener to ToolbarListener.
+     * Sets analytics Data for home btn click.
+     */
+    private void setHomeClickListener() {
+        getHomeIcon().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onHomeIconClick();
+                }
+                analyticsModel = new AnalyticsModel();
+                analyticsModel.setHeader_id("global_header");
+                analyticsModel.setUi_element_type("header");
+                analyticsModel.setIcon_id("home_icon");
+                analyticsModel.setIcon_name("Home");
+                analyticsModel.setUi_element_type("icon");
+                analyticsModel.setElement_location("header");
+            }
+        });
+
+    }
+
+    /**
+     * Sets messageClickListener to ToolbarListener.
+     * Sets analytics Data for home btn click.
+     */
+    private void setMessageClickListener() {
+        getMessageIcon().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onMessageIconClick();
+                }
+                analyticsModel = new AnalyticsModel();
+                analyticsModel.setHeader_id("global_header");
+                analyticsModel.setUi_element_type("header");
+                analyticsModel.setIcon_id("messaging_icon");
+                analyticsModel.setIcon_name("Messaging Icon");
+                analyticsModel.setUi_element_type("icon");
+                analyticsModel.setElement_location("header");
+
+            }
+        });
+    }
+
+    protected int getNavigationTitleId() {
+        return 0;
+    }
+
     public void setListener(ToolbarClickListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Interface for implementing toolbar icon clicks
+     */
     public interface ToolbarClickListener {
         void onHomeIconClick();
 

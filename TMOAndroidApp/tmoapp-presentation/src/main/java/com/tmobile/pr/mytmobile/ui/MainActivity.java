@@ -25,7 +25,7 @@ public class MainActivity extends BaseInjectingActivity implements HasSupportFra
         if (savedInstanceState == null) {
             UserListFragment fragment = new UserListFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container, fragment, UserListFragment.TAG).commit();
+                .add(R.id.fragment_container, fragment, UserListFragment.TAG).commit();
         }
     }
 

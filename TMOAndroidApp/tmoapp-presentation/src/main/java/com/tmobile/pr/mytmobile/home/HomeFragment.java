@@ -21,18 +21,18 @@ import timber.log.Timber;
 
 /**
  * Created by asaifudeen on 10/9/17.
+ * Home Page with Hello World Card
  */
 
 public class HomeFragment extends BaseInjectingFragment {
-    //Hello World Card and scrolling effect for toolbar
+    private static final String TAG = "HomeFragment";
+
     private RecyclerView recyclerView;
     private HomeCardAdapter myAdapter;
     private RecyclerViewScrollListener scrollListener;
-
     private float computedValue;
     private float cardHeight;
     private float scrollY;
-    private static final String TAG = "HomeFragment";
 
     @Override
     protected int getLayoutId() {
@@ -46,46 +46,6 @@ public class HomeFragment extends BaseInjectingFragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        //Todo: Change this to dynamic
-        AnalyticsModel analyticsModel = new AnalyticsModel();
-        analyticsModel.setPage_id("home_page");
-        analyticsModel.setPage_name("Home");
-        analyticsModel.setPage_uuid( UUID.randomUUID().toString());
-        analyticsModel.setUi_element_type("page");
-        Timber.d(analyticsModel.toString());
-    }
-
-    private class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-
-        }
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-
-            scrollY = recyclerView.computeVerticalScrollOffset();
-            cardHeight = ((HomeCardAdapter) recyclerView.getAdapter()).getViewHeight();
-            computedValue = ((Math.abs(scrollY) / Math.abs(cardHeight)) * (255));
-
-            Log.i(TAG, "cardHeight: " + cardHeight);
-            Log.i(TAG, "scrollY: " + scrollY);
-            Log.i(TAG, "computedValue: " + (int) computedValue);
-
-            if (scrollY <= cardHeight) {
-                ((BaseActivity)getActivity()).getToolbar().setBackgroundOpacity((int) computedValue);
-            } else if (scrollY > cardHeight) {
-                computedValue = 255;
-                ((BaseActivity)getActivity()).getToolbar().setBackgroundOpacity((int) computedValue);
-            }
-
-        }
-    }
     private void setUpCards() {
         recyclerView = getFragmentView().findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -112,6 +72,17 @@ public class HomeFragment extends BaseInjectingFragment {
         recyclerView.addOnScrollListener(scrollListener);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Todo: Change this to dynamic
+        AnalyticsModel analyticsModel = new AnalyticsModel();
+        analyticsModel.setPage_id("home_page");
+        analyticsModel.setPage_name("Home");
+        analyticsModel.setPage_uuid(UUID.randomUUID().toString());
+        analyticsModel.setUi_element_type("page");
+        Timber.d(analyticsModel.toString());
+    }
 
     @Override
     public void onStop() {
@@ -120,6 +91,35 @@ public class HomeFragment extends BaseInjectingFragment {
             return;
         }
         recyclerView.removeOnScrollListener(scrollListener);
+    }
+
+    private class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+
+            scrollY = recyclerView.computeVerticalScrollOffset();
+            cardHeight = ((HomeCardAdapter) recyclerView.getAdapter()).getViewHeight();
+            computedValue = ((Math.abs(scrollY) / Math.abs(cardHeight)) * (255));
+
+            Log.i(TAG, "cardHeight: " + cardHeight);
+            Log.i(TAG, "scrollY: " + scrollY);
+            Log.i(TAG, "computedValue: " + (int) computedValue);
+
+            if (scrollY <= cardHeight) {
+                ((BaseActivity) getActivity()).getToolbar().setBackgroundOpacity((int) computedValue);
+            } else if (scrollY > cardHeight) {
+                computedValue = 255;
+                ((BaseActivity) getActivity()).getToolbar().setBackgroundOpacity((int) computedValue);
+            }
+
+        }
     }
 
 }

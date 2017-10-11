@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -11,39 +10,38 @@
     <!-- AppBarLayout is a wrapper for a Toolbar in order to apply scrolling effects. -->
     <!-- Note that AppBarLayout expects to be the first child nested within a CoordinatorLayout -->
 
-        <!-- Toolbar is the actual app bar with text and the action items -->
+    <!-- Toolbar is the actual app bar with text and the action items -->
 
 
-        <!--app:layout_scrollFlags="scroll|enterAlways" -->
+    <!--app:layout_scrollFlags="scroll|enterAlways" -->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-      <FrameLayout
-          android:id="@+id/fragment_container"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_above="@+id/home_footer"
-          />
-        <include
-            layout="@layout/toolbar"/>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/home_footer" />
+
+        <include layout="@layout/toolbar" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/home_footer"
-            app:tabGravity="fill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_alignParentBottom="true"
-            app:tabPaddingStart="-1dp"
-            app:tabPaddingEnd="-1dp"
-            app:tabIndicatorColor="@color/magenta"
+            android:layout_gravity="bottom"
             android:background="@color/black"
             android:scaleY="-1"
             android:textAlignment="center"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/magenta"
+            app:tabPaddingEnd="-1dp"
+            app:tabPaddingStart="-1dp"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/white"/>
+            app:tabTextColor="@color/white" />
 
     </RelativeLayout>
 

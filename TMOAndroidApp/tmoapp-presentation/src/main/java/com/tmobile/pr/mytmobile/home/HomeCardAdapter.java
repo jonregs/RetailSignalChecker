@@ -13,11 +13,11 @@ import com.tmobile.pr.mytmobile.model.Model;
 import java.util.List;
 
 /**
- * Created by jonegalado on 10/4/17, Gimmyo Project.
+ * Adapter for Binding Hello World Card
+ * Created by jonegalado on 10/4/17.
  */
 
 public class HomeCardAdapter extends RecyclerView.Adapter<HomeCardAdapter.ViewHolder> {
-
     private List<Model> mDataSet;
     private int viewWidth;
     private int viewHeight;
@@ -31,7 +31,7 @@ public class HomeCardAdapter extends RecyclerView.Adapter<HomeCardAdapter.ViewHo
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.hello_world_card, parent, false);
 
         ViewTreeObserver viewTreeObserver = itemView.getViewTreeObserver();
-        if(viewTreeObserver.isAlive()) {
+        if (viewTreeObserver.isAlive()) {
             viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
@@ -48,7 +48,7 @@ public class HomeCardAdapter extends RecyclerView.Adapter<HomeCardAdapter.ViewHo
     @Override
     public void onBindViewHolder(HomeCardAdapter.ViewHolder holder, int position) {
         Model model = mDataSet.get(position);
-        holder.titlemessage.setText(model.getTitle());
+        holder.titleMessage.setText(model.getTitle());
         holder.body.setText(model.getBody());
     }
 
@@ -57,19 +57,23 @@ public class HomeCardAdapter extends RecyclerView.Adapter<HomeCardAdapter.ViewHo
         return mDataSet.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public int getViewHeight() {
+        return viewHeight;
+    }
 
-        public TextView titlemessage, body;
+    public int getViewWidth() {
+        return viewWidth;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView titleMessage;
+        public TextView body;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            titlemessage = itemView.findViewById(R.id.card_title);
+            titleMessage = itemView.findViewById(R.id.card_title);
             body = itemView.findViewById(R.id.card_body);
         }
-    }
-
-    public int getViewHeight() {
-        return viewHeight;
     }
 }

@@ -12,11 +12,13 @@ import dagger.android.AndroidInjectionModule;
 
 @Singleton
 @Component(modules = {
-        AndroidInjectionModule.class,
-        AppModule.class,
-        MainActivityModule.class
+    AndroidInjectionModule.class,
+    AppModule.class,
+    MainActivityModule.class
 })
 interface AppComponent {
+    void inject(TMobileApplication tMobileApplication);
+
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -24,6 +26,4 @@ interface AppComponent {
 
         AppComponent build();
     }
-
-    void inject(TMobileApplication tMobileApplication);
 }

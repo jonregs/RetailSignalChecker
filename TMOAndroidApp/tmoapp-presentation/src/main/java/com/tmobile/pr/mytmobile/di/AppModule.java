@@ -21,7 +21,7 @@ class AppModule {
     @Singleton
     @Provides
     ViewModelProvider.Factory provideViewModelFactory(
-            ViewModelSubComponent.Builder viewModelSubComponent) {
+        ViewModelSubComponent.Builder viewModelSubComponent) {
 
         return new ViewModelFactory(viewModelSubComponent.build());
     }
@@ -37,7 +37,6 @@ class AppModule {
     PostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
     }
-
 
     @Provides
     @Singleton

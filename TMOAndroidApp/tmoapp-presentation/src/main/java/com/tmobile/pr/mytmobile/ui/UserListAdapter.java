@@ -11,12 +11,12 @@ import com.tmobile.pr.mytmobile.ui.common.recyclerview.DataBoundListAdapter;
 
 import java.util.Objects;
 
-public class UserListAdapter extends DataBoundListAdapter<UserModel,UserItemBinding>{
+public class UserListAdapter extends DataBoundListAdapter<UserModel, UserItemBinding> {
     @Override
     protected UserItemBinding createBinding(ViewGroup parent) {
         return DataBindingUtil
-                .inflate(LayoutInflater.from(parent.getContext()), R.layout.user_item,
-                        parent, false);
+            .inflate(LayoutInflater.from(parent.getContext()), R.layout.user_item,
+                parent, false);
     }
 
     @Override

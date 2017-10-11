@@ -5,6 +5,7 @@
 
     <!-- Network aware component has to be implemented -->
     <data>
+
         <variable
             name="isLoading"
             type="boolean" />

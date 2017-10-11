@@ -9,9 +9,10 @@ import dagger.Subcomponent;
  */
 @Subcomponent
 public interface ViewModelSubComponent {
+    UserListViewModel userListViewModel();
+
     @Subcomponent.Builder
     interface Builder {
         ViewModelSubComponent build();
     }
-    UserListViewModel userListViewModel();
 }

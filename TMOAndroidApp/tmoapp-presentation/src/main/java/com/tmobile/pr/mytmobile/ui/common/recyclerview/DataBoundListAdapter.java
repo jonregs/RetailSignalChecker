@@ -34,7 +34,7 @@ import java.util.List;
  * @param <V> The of the ViewDataBinding
  */
 public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
-        extends RecyclerView.Adapter<DataBoundViewHolder<V>> {
+    extends RecyclerView.Adapter<DataBoundViewHolder<V>> {
 
     @Nullable
     private List<T> items;
@@ -57,10 +57,17 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
         holder.binding.executePendingBindings();
     }
 
+    protected abstract void bind(V binding, T item);
+
+    @Override
+    public int getItemCount() {
+        return items == null ? 0 : items.size();
+    }
+
     @SuppressLint("StaticFieldLeak")
     @MainThread
     public void replace(final List<T> update) {
-        dataVersion ++;
+        dataVersion++;
         if (items == null) {
             if (update == null) {
                 return;
@@ -76,7 +83,7 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
             final List<T> oldItems = items;
             new AsyncTask<Void, Void, DiffUtil.DiffResult>() {
                 @Override
-                protected DiffUtil.DiffResult  doInBackground(Void... voids) {
+                protected DiffUtil.DiffResult doInBackground(Void... voids) {
                     return DiffUtil.calculateDiff(new DiffUtil.Callback() {
                         @Override
                         public int getOldListSize() {
@@ -118,14 +125,7 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
         }
     }
 
-    protected abstract void bind(V binding, T item);
-
     protected abstract boolean areItemsTheSame(T oldItem, T newItem);
 
     protected abstract boolean areContentsTheSame(T oldItem, T newItem);
-
-    @Override
-    public int getItemCount() {
-        return items == null ? 0 : items.size();
-    }
 }

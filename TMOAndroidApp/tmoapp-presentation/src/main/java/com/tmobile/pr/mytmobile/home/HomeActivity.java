@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,10 @@ import timber.log.Timber;
 
 /**
  * Created by asaifudeen on 10/1/17.
+ * Home Activity with Toolbar and Footer configuration
  */
 
 public class HomeActivity extends BaseActivity {
-
     private TabLayout tabLayout;
     private TabLayout.Tab tab;
     private TextView textFlipper;
@@ -39,19 +40,13 @@ public class HomeActivity extends BaseActivity {
     private FragmentManager fragmentManager;
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_home;
-    }
-
-    @Override
-    protected boolean setUpToolbar() {
-        return true;
-    }
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tabLayout =  findViewById(R.id.home_footer);
+
+        getToolbar().setToolbarIconColor(R.color.magenta);
+        setUpToolbarListener();
+
+        tabLayout = findViewById(R.id.home_footer);
         optionList.add("Home");
         optionList.add("My Account");
         optionList.add("My Bill");
@@ -66,22 +61,25 @@ public class HomeActivity extends BaseActivity {
 
         fillTabLayout(optionList, optionDestination);
 
-        //Change Icon color of toolbar
-        toolbar.setToolbarIconColor(R.color.magenta);
-
-        setUpToolbarListener();
         fragmentManager = getSupportFragmentManager();
         changeFragment(new HomeFragment());
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    protected boolean setUpToolbar() {
+        return true;
+    }
 
     /*
-    Order is decided by how the options were passed.
-    options list: list of options to be displayed
-
-    TODO: destination: where each option will go (right now it is assuming a url) NEEDS CLARIFICATION
-
-     */
+    * Order is decided by how the options were passed.
+    * options list: list of options to be displayed
+    * TODO: destination: where each option will go (right now it is assuming a url) NEEDS CLARIFICATION
+    */
     private void fillTabLayout(final List<String> options, List<String> destination) {
         for (int i = 0; i < optionList.size(); i++) {
             View v = LayoutInflater.from(this).inflate(R.layout.custom_footer_item_layout, null);
@@ -97,28 +95,26 @@ public class HomeActivity extends BaseActivity {
 
             tabLayout.addTab(tab);
         }
+
         ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0).setVisibility(View.GONE);
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
 
         /*
-        TODO: Implement the change of Page.
-         */
+        *TODO: Implement the change of Page.
+        */
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-//                tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
                 if (tab.getPosition() == 0) {
-                    toolbar.setToolbarIconColor(R.color.magenta);
-                    toolbar.getToolbarTitle().setText("");
+                    getToolbar().setToolbarIconColor(R.color.magenta);
+                    getToolbar().getToolbarTitle().setText("");
                     changeFragment(new HomeFragment());
-
                 } else {
-                    toolbar.setToolbarIconColor(R.color.black);
-                    toolbar.getToolbarTitle().setText(options.get(tab.getPosition()));
+                    getToolbar().setToolbarIconColor(R.color.black);
+                    getToolbar().getToolbarTitle().setText(options.get(tab.getPosition()));
                     changeFragment(new Fragment());
-
                 }
-                tab.getCustomView().setBackgroundColor(getResources().getColor(R.color.grey));
+                tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
                 AnalyticsModel model = new AnalyticsModel();
                 model.setFooter_id(getResources().getResourceEntryName(tabLayout.getId()));
                 model.setUi_element_type("footer");
@@ -132,17 +128,13 @@ public class HomeActivity extends BaseActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-//                tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.magenta));
-                tab.getCustomView().setBackgroundColor(getResources().getColor(R.color.grey));
-//                Toast.makeText(getApplicationContext(),options.get(tab.getPosition()),Toast.LENGTH_SHORT).show();
-
+                tab.getCustomView().setBackgroundColor(ContextCompat.getColor(HomeActivity.this, R.color.grey));
             }
         });
     }
 
-
     private void setUpToolbarListener() {
-        toolbar.setListener(new BaseToolbar.ToolbarClickListener() {
+        getToolbar().setListener(new BaseToolbar.ToolbarClickListener() {
             @Override
             public void onHomeIconClick() {
                 Toast.makeText(getApplicationContext(), R.string.home_navigate, Toast.LENGTH_SHORT).show();
@@ -154,19 +146,8 @@ public class HomeActivity extends BaseActivity {
                 Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
-
             }
         });
-
-    }
-
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if (intent.getBooleanExtra("isHome", false)) {
-            tabLayout.getTabAt(0).select();
-        }
     }
 
     private void changeFragment(Fragment fragment) {
@@ -174,6 +155,14 @@ public class HomeActivity extends BaseActivity {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent.getBooleanExtra("isHome", false)) {
+            tabLayout.getTabAt(0).select();
         }
     }
 }

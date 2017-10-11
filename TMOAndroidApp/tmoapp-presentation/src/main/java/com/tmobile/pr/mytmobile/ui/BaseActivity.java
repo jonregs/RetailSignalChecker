@@ -18,7 +18,6 @@
 
 package com.tmobile.pr.mytmobile.ui;
 
-
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -36,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = BaseActivity.class.getSimpleName();
 
     @Nullable
-    protected BaseToolbar toolbar;
+    private BaseToolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -48,16 +47,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @LayoutRes
     protected abstract int getLayoutId();
 
-    /**
-     * Specify toolbar requirement
-     * NOTE : Before instantiating make sure that @layout/toolbar is included in activity_layout.xml
-     */
-    protected abstract boolean setUpToolbar();
-
-    private void initToolbar(boolean isExist){
-        if (isExist){
+    private void initToolbar(boolean isExist) {
+        if (isExist) {
             toolbar = new BaseToolbar(this);
-            Log.i(TAG, "Toolbar Initialised:"+ toolbar);
+            Log.i(TAG, "Toolbar Initialised:" + toolbar);
 
             setSupportActionBar(toolbar.getToolbar());
             // We use our own toolbar title, so hide the default one
@@ -65,7 +58,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public BaseToolbar getToolbar(){
+    /**
+     * Return toolbar requirement in child activity
+     * NOTE : Before instantiating make sure that @layout/toolbar is included in activity_layout.xml
+     */
+    protected abstract boolean setUpToolbar();
+
+    public BaseToolbar getToolbar() {
         return toolbar;
     }
 

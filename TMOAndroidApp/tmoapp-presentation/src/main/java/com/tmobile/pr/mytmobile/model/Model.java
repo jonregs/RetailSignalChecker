@@ -1,7 +1,7 @@
 package com.tmobile.pr.mytmobile.model;
 
 /**
- * Created by jonegalado on 10/4/17, Gimmyo Project.
+ * Created by jonegalado on 10/4/17
  */
 
 public class Model {

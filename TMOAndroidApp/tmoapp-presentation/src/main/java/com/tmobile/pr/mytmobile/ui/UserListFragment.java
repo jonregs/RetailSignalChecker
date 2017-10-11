@@ -42,36 +42,9 @@ import javax.inject.Inject;
 
 public class UserListFragment extends BaseInjectingFragment implements Injectable {
     public static final String TAG = "UserListFragment";
-
-    private UserListAdapter userListAdapter;
     @Inject
     ViewModelProvider.Factory viewModelFactory;
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        final UserListViewModel viewModel = ViewModelProviders.of(this,
-                viewModelFactory).get(UserListViewModel.class);
-
-        observeViewModel(viewModel);
-    }
-
-    /***
-     * Observe the view model and replace the adapter data.
-     * @param viewModel
-     */
-    private void observeViewModel(@NonNull UserListViewModel viewModel) {
-        // Update the list when the data changes
-        viewModel.getProjectListObservable().observe(this, new Observer<List<UserModel>>() {
-            @Override
-            public void onChanged(@Nullable List<UserModel> projects) {
-                if (projects != null) {
-                    userListAdapter.replace(projects);
-                }
-            }
-        });
-    }
+    private UserListAdapter userListAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -90,5 +63,31 @@ public class UserListFragment extends BaseInjectingFragment implements Injectabl
         tabLayout.addTab(tabLayout.newTab().setText("SHOP"));
         tabLayout.addTab(tabLayout.newTab().setText("MORE"));
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final UserListViewModel viewModel = ViewModelProviders.of(this,
+            viewModelFactory).get(UserListViewModel.class);
+
+        observeViewModel(viewModel);
+    }
+
+    /***
+     * Observe the view model and replace the adapter data.
+     * @param viewModel
+     */
+    private void observeViewModel(@NonNull UserListViewModel viewModel) {
+        // Update the list when the data changes
+        viewModel.getProjectListObservable().observe(this, new Observer<List<UserModel>>() {
+            @Override
+            public void onChanged(@Nullable List<UserModel> projects) {
+                if (projects != null) {
+                    userListAdapter.replace(projects);
+                }
+            }
+        });
     }
 }

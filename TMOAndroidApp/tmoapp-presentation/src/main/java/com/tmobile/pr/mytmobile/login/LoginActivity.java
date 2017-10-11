@@ -9,6 +9,7 @@ import com.tmobile.pr.mytmobile.ui.BaseActivity;
 
 /**
  * Created by asaifudeen on 10/1/17.
+ * Dummy Login Activity
  */
 
 public class LoginActivity extends BaseActivity {

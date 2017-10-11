@@ -74,6 +74,31 @@ public abstract class BaseActivity extends AppCompatActivity {
         return toolbar;
     }
 
+    protected View getHomeIcon() {
+        if (homeIcon == null) {
+            homeIcon = findViewById(R.id.home_icon);
+        }
+        return homeIcon;
+    }
+
+    protected View getMessageIcon() {
+        if (homeIcon == null) {
+            messageIcon = findViewById(R.id.message_icon);
+        }
+        return messageIcon;
+    }
+
+    protected View getToolbarTitle() {
+        toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
+        if (toolbarTitle != null) {
+            int titleId = getNavigationTitleId();
+            if (titleId != 0) {
+                toolbarTitle.setText(titleId);
+            }
+        }
+        return toolbarTitle;
+    }
+
     private void setUpIcons() {
 
     /*homeIcon.setOnClickListener(new View.OnClickListener() {
@@ -97,30 +122,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         //TODO change from child activity
         //setToolbarIconColor(R.color.magenta);
-    }
-
-
-    protected View getHomeIcon() {
-        if (homeIcon == null)
-            homeIcon = findViewById(R.id.home_icon);
-        return homeIcon;
-    }
-
-    protected View getMessageIcon() {
-        if (homeIcon == null)
-            messageIcon = findViewById(R.id.message_icon);
-        return messageIcon;
-    }
-
-    protected View getToolbarTitle() {
-        toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
-        if (toolbarTitle != null) {
-            int titleId = getNavigationTitleId();
-            if (titleId != 0) {
-                toolbarTitle.setText(titleId);
-            }
-        }
-        return toolbarTitle;
     }
 
     protected int getNavigationTitleId() {

@@ -33,20 +33,20 @@ import android.view.ViewGroup;
 //TODO we need to provide the injection through dagger.
 public abstract class BaseInjectingFragment extends LifecycleFragment {
 
-  @Override
-  public void onAttach(Context context) {
-    super.onAttach(context);
-  }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
-  @Override
-  @CallSuper
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
-    return inflater.inflate(getLayoutId(), container, false);
-  }
+    @Override
+    @CallSuper
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(getLayoutId(), container, false);
+    }
 
-  public abstract void onInject();
+    @LayoutRes
+    protected abstract int getLayoutId();
 
-  @LayoutRes
-  protected abstract int getLayoutId();
+    public abstract void onInject();
 }

@@ -22,8 +22,6 @@ import org.junit.runner.RunWith;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class BaseTest {
-    private static final String PACKAGE_NAME = "com.prokarma.mytmob.activity";
-
     protected Context appContext;
 
     @Before
@@ -33,12 +31,13 @@ public class BaseTest {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         Intents.release();
     }
 
     /**
      * Custom Matcher for TextView
+     *
      * @param color
      * @return
      */
@@ -49,30 +48,50 @@ public class BaseTest {
             public boolean matchesSafely(TextView textView) {
                 return color == textView.getCurrentTextColor();
             }
+
             @Override
             public void describeTo(Description description) {
                 description.appendText("with text color: [")
-                        .appendText(Integer.toString(color))
-                        .appendText("]");
+                    .appendText(Integer.toString(color))
+                    .appendText("]");
             }
         };
     }
 
     public static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
+        final Matcher<View> parentMatcher, final int position) {
 
         return new TypeSafeMatcher<View>() {
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                    && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+
             @Override
             public void describeTo(Description description) {
                 description.appendText("Child at position " + position + " in parent ");
                 parentMatcher.describeTo(description);
             }
 
+        };
+    }
+
+    public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
+        return new TypeSafeMatcher<View>() {
+            int currentIndex = 0;
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with index: ");
+                description.appendValue(index);
+                matcher.describeTo(description);
+            }
+
             @Override
             public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
+                return matcher.matches(view) && currentIndex++ == index;
             }
         };
     }
