@@ -31,8 +31,7 @@ import timber.log.Timber;
  */
 
 public class HomeActivity extends BaseActivity {
-    private static final int HOME_DIVEDER_INDEX = 1;
-    @Nullable
+    private static final int HOME_DIVIDER_INDEX = 1;
     private TabLayout tabLayout;
 
     private List<String> optionList = new ArrayList<>();
@@ -111,7 +110,7 @@ public class HomeActivity extends BaseActivity {
             textFlipper.setSingleLine();
 
             divider = v.findViewById(R.id.divider);
-            divider.setVisibility(i == HOME_DIVEDER_INDEX ? View.GONE : View.VISIBLE);
+            divider.setVisibility(i == HOME_DIVIDER_INDEX ? View.GONE : View.VISIBLE);
 
             tabLayout.addTab(tab);
         }

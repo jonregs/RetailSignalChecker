@@ -21,7 +21,7 @@ import com.tmobile.pr.mytmobile.R;
  */
 
 public class BaseToolbar {
-    private final AppCompatActivity context;
+    private final AppCompatActivity activity;
     private Toolbar toolbar;
     private ToolbarClickListener listener;
     private ImageView homeIcon;
@@ -30,7 +30,7 @@ public class BaseToolbar {
     private AnalyticsModel analyticsModel;
 
     public BaseToolbar(AppCompatActivity appCompatActivity) {
-        this.context = appCompatActivity;
+        this.activity = appCompatActivity;
     }
 
     /**
@@ -40,7 +40,7 @@ public class BaseToolbar {
      */
     @Nullable
     public void setToolbarIconColor(@ColorRes int color) {
-        int tint = ContextCompat.getColor(context, color);
+        int tint = ContextCompat.getColor(activity, color);
         setVectorColor(homeIcon.getDrawable(), tint);
         setVectorColor(messageIcon.getDrawable(), tint);
     }
@@ -66,7 +66,7 @@ public class BaseToolbar {
      */
     public Toolbar getToolbar() {
         if (toolbar == null) {
-            toolbar = context.findViewById(R.id.global_header);
+            toolbar = activity.findViewById(R.id.global_header);
             toolbar.getBackground().setAlpha(0);
 
             getHomeIcon();
@@ -85,7 +85,7 @@ public class BaseToolbar {
      */
     public View getHomeIcon() {
         if (homeIcon == null) {
-            homeIcon = context.findViewById(R.id.home_icon);
+            homeIcon = activity.findViewById(R.id.home_icon);
         }
         return homeIcon;
     }
@@ -97,7 +97,7 @@ public class BaseToolbar {
      */
     public View getMessageIcon() {
         if (messageIcon == null) {
-            messageIcon = context.findViewById(R.id.message_icon);
+            messageIcon = activity.findViewById(R.id.message_icon);
         }
         return messageIcon;
     }
@@ -109,11 +109,7 @@ public class BaseToolbar {
      */
     public TextView getToolbarTitle() {
         if (toolbarTitle == null) {
-            toolbarTitle = context.findViewById(R.id.toolbar_title);
-            int titleId = getNavigationTitleId();
-            if (titleId != 0) {
-                toolbarTitle.setText(titleId);
-            }
+            toolbarTitle = activity.findViewById(R.id.toolbar_title);
         }
         return toolbarTitle;
     }
@@ -138,7 +134,6 @@ public class BaseToolbar {
                 analyticsModel.setElement_location("header");
             }
         });
-
     }
 
     /**
@@ -159,13 +154,8 @@ public class BaseToolbar {
                 analyticsModel.setIcon_name("Messaging Icon");
                 analyticsModel.setUi_element_type("icon");
                 analyticsModel.setElement_location("header");
-
             }
         });
-    }
-
-    protected int getNavigationTitleId() {
-        return 0;
     }
 
     public void setListener(ToolbarClickListener listener) {
