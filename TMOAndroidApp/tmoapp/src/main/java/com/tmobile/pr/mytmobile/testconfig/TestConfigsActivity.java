@@ -27,7 +27,7 @@ public class TestConfigsActivity extends AppCompatActivity implements AdapterVie
 
     private EditText editSetting1;
     private EditText editSetting2;
-    private TestConfigsModel debugSettingsModel = new TestConfigsModel();
+    private TestConfigsModel testConfigsModel= new TestConfigsModel();
 
     private ArrayList<String> envList;
     private TextView configText;
@@ -42,7 +42,7 @@ public class TestConfigsActivity extends AppCompatActivity implements AdapterVie
 
     private void setupUI() {
         configSpinner = findViewById(R.id.config_spinner);
-        envList = debugSettingsModel.getEnvironments();
+        envList = testConfigsModel.getEnvironments();
         items = envList.toArray(new String[envList.size()]);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -62,18 +62,19 @@ public class TestConfigsActivity extends AppCompatActivity implements AdapterVie
 
         configText = findViewById(R.id.config_text);
 
-        String lastEnvName = debugSettingsModel.getCurrentEnvName(this);
+        String lastEnvName = testConfigsModel.getCurrentEnvName(this);
         int index = getIndexFor(lastEnvName);
+        configSpinner.setSelection(index);
 
         populateFields(items[index]);
-        debugSettingsModel.setCurrentEnvName(this, debugSettingsModel.PROD);
+        testConfigsModel.setCurrentEnvName(this, testConfigsModel.PROD);
     }
 
     private int getIndexFor(String configName){
         for (int i = 0; i < items.length; i++) {
             if (items[i].equalsIgnoreCase(configName)) {
                 //populateFields(lastEnvName);
-                configSpinner.setSelection(i);
+                //configSpinner.setSelection(i);
                 return i;
             }
         }
@@ -89,21 +90,21 @@ public class TestConfigsActivity extends AppCompatActivity implements AdapterVie
         map.put(TestConfigsModel.URL1, url1);
         map.put(TestConfigsModel.URL2, url2);
         map.put(TestConfigsModel.SETTING_NAME, TestConfigsModel.CUSTOM);
-        debugSettingsModel.saveCustomonfigData(TestConfigsActivity.this,map);
-        debugSettingsModel.setCurrentEnvName(TestConfigsActivity.this, TestConfigsModel.CUSTOM);
+        testConfigsModel.saveCustomonfigData(TestConfigsActivity.this,map);
+        testConfigsModel.setCurrentEnvName(TestConfigsActivity.this, TestConfigsModel.CUSTOM);
         configSpinner.setSelection(getIndexFor(TestConfigsModel.CUSTOM));
     }
 
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
         Log.d(TAG, "onItemSelected: " + position);
         String envName = envList.get(position);
-        debugSettingsModel.setCurrentEnvName(this, envName);
+        testConfigsModel.setCurrentEnvName(this, envName);
         Toast.makeText(this, "Config name se to " + envName, Toast.LENGTH_SHORT).show();
         populateFields(envName);
     }
 
     private void populateFields(String configName) {
-        Map<String, String> dataMap = debugSettingsModel.getSettngsForEnvironment(this,configName);
+        Map<String, String> dataMap = testConfigsModel.getSettngsForEnvironment(this,configName);
         if (dataMap != null) {
             if (dataMap.containsKey(TestConfigsModel.URL1)) {
                 String s = dataMap.get(TestConfigsModel.URL1);
@@ -135,11 +136,12 @@ public class TestConfigsActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btn_load_defaults) {
-            populateFields(debugSettingsModel.getCurrentEnvName(this));
-            debugSettingsModel.setCurrentEnvName(this, TestConfigsModel.PROD);
+            int index = getIndexFor(TestConfigsModel.PROD);
+            configSpinner.setSelection(index);
+            populateFields(testConfigsModel.getCurrentEnvName(this));
+            testConfigsModel.setCurrentEnvName(this, TestConfigsModel.PROD);
         } else if (v.getId() == R.id.btn_save) {
             saveCustomConfig();
         }
-
     }
 }
