@@ -14,7 +14,7 @@ import com.tmobile.pr.mytmobile.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_TIME_OUT = 5000;
+    private static final int SPLASH_TIME_OUT = 200;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

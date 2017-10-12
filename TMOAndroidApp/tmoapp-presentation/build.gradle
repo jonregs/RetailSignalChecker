@@ -12,7 +12,7 @@ android {
     compileSdkVersion androidVersions.compileSdkVersion
     buildToolsVersion androidVersions.buildToolsVersion
     defaultConfig {
-        applicationId "com.tmobile.pr.mytmobile"
+        applicationId "com.tmobile.redesign.app"
         minSdkVersion androidVersions.minSdkVersion
         targetSdkVersion androidVersions.targetSdkVersion
         versionCode 1
