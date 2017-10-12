@@ -18,25 +18,60 @@
 
 package com.tmobile.pr.mytmobile.ui;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.tmobile.pr.mytmobile.ui.common.BaseToolbar;
 
 /**
  * A base activity that handles common functionality in the app.
  * Created by Srikanth Roopa on 09/29/2017
  */
 //TODO Implement the common functionalities like toolbar customization, material bottomnavigationview in the base activity.
-public abstract class BaseActivity extends LifecycleActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+    private static final String TAG = BaseActivity.class.getSimpleName();
 
-  @Override
-  protected void onCreate(@Nullable final Bundle savedInstanceState) {
-    setContentView(getLayoutId());
-    super.onCreate(savedInstanceState);
-  }
+    @Nullable
+    private BaseToolbar toolbar;
 
-  @LayoutRes
-  protected abstract int getLayoutId();
+    @Override
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
+        setContentView(getLayoutId());
+        super.onCreate(savedInstanceState);
+        initToolbar(setUpToolbar());
+    }
+
+    @LayoutRes
+    protected abstract int getLayoutId();
+
+    private void initToolbar(boolean isExist) {
+        if (isExist) {
+            toolbar = new BaseToolbar(this);
+            Log.i(TAG, "Toolbar Initialised:" + toolbar);
+
+            setSupportActionBar(toolbar.getToolbar());
+            // We use our own toolbar title, so hide the default one
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
+        }
+    }
+
+    /**
+     * Return toolbar requirement in child activity
+     * NOTE : Before instantiating make sure that @layout/toolbar is included in activity_layout.xml
+     */
+    protected abstract boolean setUpToolbar();
+
+    @Nullable
+    public BaseToolbar getToolbar() {
+        if (toolbar == null) {
+            initToolbar(setUpToolbar());
+        }
+        return toolbar;
+    }
 
 }

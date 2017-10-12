@@ -2,8 +2,10 @@
 package com.tmobile.pr.mytmobile.data.net;
 
 import com.tmobile.pr.mytmobile.data.entity.UserEntity;
-import io.reactivex.Observable;
+
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * RestApi for retrieving data from the network.

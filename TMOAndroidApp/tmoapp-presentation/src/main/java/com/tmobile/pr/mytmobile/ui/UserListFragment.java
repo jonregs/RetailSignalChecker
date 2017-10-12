@@ -29,46 +29,22 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.di.Injectable;
 import com.tmobile.pr.mytmobile.model.UserModel;
 import com.tmobile.pr.mytmobile.ui.common.BaseInjectingFragment;
 import com.tmobile.pr.mytmobile.viewmodel.UserListViewModel;
+
 import java.util.List;
+
 import javax.inject.Inject;
 
 public class UserListFragment extends BaseInjectingFragment implements Injectable {
     public static final String TAG = "UserListFragment";
-
-    private UserListAdapter userListAdapter;
     @Inject
     ViewModelProvider.Factory viewModelFactory;
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        final UserListViewModel viewModel = ViewModelProviders.of(this,
-                viewModelFactory).get(UserListViewModel.class);
-
-        observeViewModel(viewModel);
-    }
-
-    /***
-     * Observe the view model and replace the adapter data.
-     * @param viewModel
-     */
-    private void observeViewModel(@NonNull UserListViewModel viewModel) {
-        // Update the list when the data changes
-        viewModel.getProjectListObservable().observe(this, new Observer<List<UserModel>>() {
-            @Override
-            public void onChanged(@Nullable List<UserModel> projects) {
-                if (projects != null) {
-                    userListAdapter.replace(projects);
-                }
-            }
-        });
-    }
+    private UserListAdapter userListAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -87,5 +63,31 @@ public class UserListFragment extends BaseInjectingFragment implements Injectabl
         tabLayout.addTab(tabLayout.newTab().setText("SHOP"));
         tabLayout.addTab(tabLayout.newTab().setText("MORE"));
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final UserListViewModel viewModel = ViewModelProviders.of(this,
+            viewModelFactory).get(UserListViewModel.class);
+
+        observeViewModel(viewModel);
+    }
+
+    /***
+     * Observe the view model and replace the adapter data.
+     * @param viewModel
+     */
+    private void observeViewModel(@NonNull UserListViewModel viewModel) {
+        // Update the list when the data changes
+        viewModel.getProjectListObservable().observe(this, new Observer<List<UserModel>>() {
+            @Override
+            public void onChanged(@Nullable List<UserModel> projects) {
+                if (projects != null) {
+                    userListAdapter.replace(projects);
+                }
+            }
+        });
     }
 }

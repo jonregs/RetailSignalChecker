@@ -3,9 +3,11 @@ package com.tmobile.pr.mytmobile.data.entity.mapper;
 
 import com.tmobile.pr.mytmobile.data.entity.UserEntity;
 import com.tmobile.pr.mytmobile.domain.model.User;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

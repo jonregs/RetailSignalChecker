@@ -15,9 +15,9 @@
  */
 package com.tmobile.pr.mytmobile.mapper;
 
-
 import com.tmobile.pr.mytmobile.domain.model.User;
 import com.tmobile.pr.mytmobile.model.UserModel;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -32,26 +32,6 @@ public class UserModelDataMapper {
 
     @Inject
     public UserModelDataMapper() {
-    }
-
-    /**
-     * Transform a {@link User} into an {@link UserModel}.
-     *
-     * @param user Object to be transformed.
-     * @return {@link UserModel}.
-     */
-    public UserModel transform(User user) {
-        if (user == null) {
-            throw new IllegalArgumentException("Cannot transform a null value");
-        }
-        final UserModel userModel = new UserModel(user.getUserId());
-        userModel.setCoverUrl(user.getCoverUrl());
-        userModel.setFullName(user.getFullName());
-        userModel.setEmail(user.getEmail());
-        userModel.setDescription(user.getDescription());
-        userModel.setFollowers(user.getFollowers());
-
-        return userModel;
     }
 
     /**
@@ -73,5 +53,25 @@ public class UserModelDataMapper {
         }
 
         return userModelsCollection;
+    }
+
+    /**
+     * Transform a {@link User} into an {@link UserModel}.
+     *
+     * @param user Object to be transformed.
+     * @return {@link UserModel}.
+     */
+    public UserModel transform(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("Cannot transform a null value");
+        }
+        final UserModel userModel = new UserModel(user.getUserId());
+        userModel.setCoverUrl(user.getCoverUrl());
+        userModel.setFullName(user.getFullName());
+        userModel.setEmail(user.getEmail());
+        userModel.setDescription(user.getDescription());
+        userModel.setFollowers(user.getFollowers());
+
+        return userModel;
     }
 }

@@ -30,14 +30,20 @@ import android.view.ViewGroup;
  * BaseInjecting Fragment class which implements LifeCycleFragment Components.
  */
 public abstract class BaseInjectingFragment extends Fragment {
+    View view;
 
-  @Override
-  @CallSuper
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
-    return inflater.inflate(getLayoutId(), container, false);
-  }
+    @Override
+    @CallSuper
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(getLayoutId(), container, false);
+        return view;
+    }
 
-  @LayoutRes
-  protected abstract int getLayoutId();
+    @LayoutRes
+    protected abstract int getLayoutId();
+
+    protected View getFragmentView() {
+        return view;
+    }
 }

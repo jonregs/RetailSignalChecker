@@ -1,7 +1,19 @@
 <resources>
-    <string name="app_name">TMOAndroidApp</string>
+    <string name="app_name">T-Mobile Genesis App</string>
+
     <string name="my_account">My Account</string>
     <string name="my_bill">My Bill</string>
     <string name="shop">Shop</string>
     <string name="more">More</string>
+
+
+    <!--Header/Toolbar-->
+    <string name="hello">Hello</string>
+    <string name="welcome_text">Welcome to the T-Mobile app</string>
+    <string name="message_icon">Messaging Icon</string>
+    <string name="home">Home</string>
+    <string name="action_settings">Settings</string>
+    <string name="home_navigate">Navigate to home</string>
+    <string name="customer_navigate">Navigate to TMO customer service</string>
+    <string name="chat">Chat</string>
 </resources>

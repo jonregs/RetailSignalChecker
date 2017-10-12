@@ -9,12 +9,18 @@ import com.tmobile.pr.mytmobile.ui.BaseActivity;
 
 /**
  * Created by asaifudeen on 10/1/17.
+ * Dummy Login Activity
  */
 
 public class LoginActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
+    }
+
+    @Override
+    protected boolean setUpToolbar() {
+        return false;
     }
 
     public void onLoginClicked(View view) {

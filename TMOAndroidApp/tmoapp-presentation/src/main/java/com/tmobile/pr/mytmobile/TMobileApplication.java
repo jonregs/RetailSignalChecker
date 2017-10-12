@@ -7,6 +7,7 @@ import com.tmobile.pr.mytmobile.di.AppInjector;
 import com.tmobile.pr.mytmobile.util.TimberAppLog;
 
 import javax.inject.Inject;
+
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import timber.log.Timber;

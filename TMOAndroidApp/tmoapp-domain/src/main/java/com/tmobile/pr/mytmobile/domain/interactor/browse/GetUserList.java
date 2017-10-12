@@ -6,9 +6,12 @@ import com.tmobile.pr.mytmobile.domain.executor.ThreadExecutor;
 import com.tmobile.pr.mytmobile.domain.interactor.UseCase;
 import com.tmobile.pr.mytmobile.domain.model.User;
 import com.tmobile.pr.mytmobile.domain.repository.UserRepository;
-import io.reactivex.Observable;
+
 import java.util.List;
+
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
 
 /**
  * retrieving a collection of all {@link User}.

@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
+
 import com.tmobile.pr.mytmobile.domain.interactor.DefaultObserver;
 import com.tmobile.pr.mytmobile.domain.interactor.browse.GetUserList;
 import com.tmobile.pr.mytmobile.domain.model.User;
@@ -17,13 +18,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class UserListViewModel extends AndroidViewModel {
-    private MutableLiveData userLiveData = new MutableLiveData<>();
     private final GetUserList getUserListUseCase;
     private final UserModelDataMapper userModelDataMapper;
+    private MutableLiveData userLiveData = new MutableLiveData<>();
 
     @Inject
     public UserListViewModel(@NonNull Application application, GetUserList getUserListUserCase,
-                                UserModelDataMapper userModelDataMapper) {
+                             UserModelDataMapper userModelDataMapper) {
         super(application);
         // If any transformation is needed, this can be simply done by Transformations class ...
         this.getUserListUseCase = getUserListUserCase;
@@ -51,11 +52,22 @@ public class UserListViewModel extends AndroidViewModel {
         return userLiveData;
     }
 
+    private void showUsersCollectionInView(@NonNull Collection<User> usersCollection) {
+        final Collection<UserModel> userModelsCollection =
+            this.userModelDataMapper.transform(usersCollection);
+        userLiveData.postValue(userModelsCollection);
+    }
+
     /**
-     * Passing Default Oberver implementation to the use case
+     * Passing Default Observer implementation to the use case
      * and once results are retried update the UI
      */
     private final class UserListObserver extends DefaultObserver<List<User>> {
+
+        @Override
+        public void onNext(List<User> users) {
+            showUsersCollectionInView(users);
+        }
 
         @Override
         public void onComplete() {
@@ -66,16 +78,5 @@ public class UserListViewModel extends AndroidViewModel {
         public void onError(Throwable e) {
             //Need to implement
         }
-
-        @Override
-        public void onNext(List<User> users) {
-            showUsersCollectionInView(users);
-        }
-    }
-
-    private void showUsersCollectionInView(@NonNull Collection<User> usersCollection) {
-        final Collection<UserModel> userModelsCollection =
-                this.userModelDataMapper.transform(usersCollection);
-        userLiveData.postValue(userModelsCollection);
     }
 }

@@ -4,8 +4,9 @@ package com.tmobile.pr.mytmobile.data.repository.datasource;
 import com.tmobile.pr.mytmobile.data.entity.UserEntity;
 import com.tmobile.pr.mytmobile.data.net.RestApi;
 
-import io.reactivex.Observable;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * {@link UserDataStore} implementation based on connections to the api (Cloud).
