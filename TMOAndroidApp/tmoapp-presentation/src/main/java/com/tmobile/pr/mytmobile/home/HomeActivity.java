@@ -9,15 +9,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tmobile.pr.mytmobile.AnalyticsModel;
+import com.tmobile.pr.mytmobile.BuildConfig;
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.message.MessageActivity;
 import com.tmobile.pr.mytmobile.ui.BaseActivity;
+import com.tmobile.pr.mytmobile.ui.DebugSettingsActivity;
 import com.tmobile.pr.mytmobile.ui.common.BaseToolbar;
 
 import java.util.ArrayList;
@@ -90,6 +95,28 @@ public class HomeActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (BuildConfig.DEBUG) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.options_menu, menu);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.diagnostics:
+                startActivity(new Intent(this, DebugSettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     /*
     * Order is decided by how the options were passed.

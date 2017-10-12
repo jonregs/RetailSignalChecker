@@ -26,6 +26,7 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".message.MessageActivity" />
+        <activity android:name=".ui.DebugSettingsActivity" />
     </application>
 
 </manifest>
