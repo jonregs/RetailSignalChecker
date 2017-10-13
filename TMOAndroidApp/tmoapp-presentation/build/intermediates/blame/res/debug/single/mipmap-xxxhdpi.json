@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_round.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_foreground.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    }
+]

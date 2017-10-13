@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\8f094bbf012699fe8f48c1378a231122e227c884\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\8f094bbf012699fe8f48c1378a231122e227c884\\output\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\tooltip_enter.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\tooltip_enter.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\layout_animation_from_bottom.xml",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\src\\main\\res\\anim\\layout_animation_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\8f094bbf012699fe8f48c1378a231122e227c884\\output\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\tooltip_exit.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\tooltip_exit.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\item_animation_from_bottom.xml",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\src\\main\\res\\anim\\item_animation_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\8f094bbf012699fe8f48c1378a231122e227c884\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e721e76d60fb975ead15e8fcfb9476ff72180c79\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    }
+]

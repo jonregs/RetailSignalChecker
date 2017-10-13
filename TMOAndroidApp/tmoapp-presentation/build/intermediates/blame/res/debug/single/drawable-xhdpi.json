@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_home_button_icon.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_home_button_icon.png"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher_background.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\__leak_canary_icon.png",
+        "source": "C:\\Users\\prokarma\\.android\\build-cache\\e27fc9d62f32f294aa9d3f7af47efde4ba65b4c2\\output\\res\\drawable-xhdpi\\__leak_canary_icon.png"
+    },
+    {
+        "merged": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_message_button_icon.png",
+        "source": "C:\\AndroidGarage\\SourceCode\\Remote\\TMOAndroidApp\\tmoapp-presentation\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_message_button_icon.png"
+    }
+]

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!-- AppBarLayout is a wrapper for a Toolbar in order to apply scrolling effects. --><!-- Note that AppBarLayout expects to be the first child nested within a CoordinatorLayout -->
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appBar"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:background="@color/toolbarBg"
+    app:elevation="0dp">
+
+    <android.support.v7.widget.Toolbar
+
+        android:id="@+id/global_header"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+
+        android:background="@color/toolbarBg"
+        android:paddingRight="10dp"
+        app:layout_collapseMode="pin">
+
+
+        <ImageView
+            android:id="@+id/home_icon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_home_button_icon"
+            android:tag="@string/home" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textColor="@color/black"
+            tools:text="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/message_icon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_message_button_icon"
+            android:tag="@string/message_icon" />
+
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>
