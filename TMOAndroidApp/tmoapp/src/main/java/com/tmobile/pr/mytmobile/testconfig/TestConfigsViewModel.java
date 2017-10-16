@@ -22,6 +22,8 @@ public class TestConfigsViewModel {
 
     private static final String DBG_SETTIGS_SHARED_PREFS = "DBG_SETTIGS_SHARED_PREFS";
     private static final String TAG = "TestConfigsDataModel";
+    private static final String PROD_URL1 = "PROD_URL1";
+    private static final String PROD_URL2 = "PROD_URL2";
 
     private static HashMap<String,String> settingsMap = new HashMap<>();
 
