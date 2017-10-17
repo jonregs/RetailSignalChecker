@@ -5,7 +5,7 @@ import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.tmobile.pr.mytmobile.home.HomeActivity;
+import com.tmobile.pr.mytmobile.home.view.HomeActivity;
 import com.tmobile.pr.mytmobile.login.LoginActivity;
 
 import org.junit.After;

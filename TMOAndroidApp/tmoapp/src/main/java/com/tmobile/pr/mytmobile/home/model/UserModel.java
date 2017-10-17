@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.model;
+package com.tmobile.pr.mytmobile.home.model;
 
 /**
  * Class that represents a user in the presentation layer.

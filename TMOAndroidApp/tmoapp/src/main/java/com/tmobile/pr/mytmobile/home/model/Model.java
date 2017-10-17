@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.model;
+package com.tmobile.pr.mytmobile.home.model;
 
 /**
  * Created by jonegalado on 10/4/17

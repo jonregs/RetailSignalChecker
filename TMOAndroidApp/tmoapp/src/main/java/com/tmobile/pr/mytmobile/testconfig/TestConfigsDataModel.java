@@ -1,7 +1,6 @@
 package com.tmobile.pr.mytmobile.testconfig;
 
 import java.util.HashMap;
-import io.reactivex.Observable;
 
 public class TestConfigsDataModel {
 
@@ -26,12 +25,12 @@ public class TestConfigsDataModel {
     private static final String PROD_URL1 = "Prod Url1";
     private static final String PROD_URL2 = "Prod Url2";
 
-    private HashMap<String,HashMap<String,String>> envMap = null;
+    private HashMap<String,HashMap<String,String>> configsMap = null;
 
-    public Observable<HashMap<String, HashMap<String, String>>> getEnvironmentsObservable(){
+    public HashMap<String, HashMap<String, String>> getEnvironments(){
 
-        if (envMap == null) {
-            envMap = new HashMap<>();
+        if (configsMap == null) {
+            configsMap = new HashMap<>();
 
             HashMap<String, String> prodMap = new HashMap<>();
             prodMap.put(URL1, PROD_URL1);
@@ -53,12 +52,12 @@ public class TestConfigsDataModel {
             qaMap.put(URL2, QA_URL2);
             qaMap.put(SETTING_NAME, QA);
 
-            envMap.put(PROD, prodMap);
-            envMap.put(PREPROD, preprodMap);
-            envMap.put(MOCK, mockMap);
-            envMap.put(QA, qaMap);
+            configsMap.put(PROD, prodMap);
+            configsMap.put(PREPROD, preprodMap);
+            configsMap.put(MOCK, mockMap);
+            configsMap.put(QA, qaMap);
         }
 
-        return io.reactivex.Observable.just(envMap);
+        return configsMap;
     }
 }

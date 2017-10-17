@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.tmobile.pr.mytmobile.R;
-import com.tmobile.pr.mytmobile.home.HomeActivity;
+import com.tmobile.pr.mytmobile.home.view.HomeActivity;
 import com.tmobile.pr.mytmobile.common.BaseActivity;
 import com.tmobile.pr.mytmobile.common.BaseToolbar;
 

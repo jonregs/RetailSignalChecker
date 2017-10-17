@@ -65,14 +65,6 @@ dependencies {
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
 
-//    compile project(':tmoapp-domain')
-//    compile project(':tmoapp-data')
-
-//    compile presentationDependencies.dagger
-//    compile presentationDependencies.daggerAndroid
-//    compile presentationDependencies.daggerAndroidSupport
-//    annotationProcessor presentationDependencies.daggerCompiler
-//    annotationProcessor presentationDependencies.daggerProcessor
     compile presentationDependencies.androidAnnotations
     compile presentationDependencies.androidSupportV4
     compile presentationDependencies.androidSupportV13
@@ -99,7 +91,7 @@ dependencies {
     androidTestCompile presentationDependencies.androidAnnotations
 
 
-    compile developmentDependencies.leakCanary
+//    compile developmentDependencies.leakCanary
 
 
 }

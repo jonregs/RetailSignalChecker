@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.home;
+package com.tmobile.pr.mytmobile.home.view;
 
 import android.content.Intent;
 import android.os.Bundle;

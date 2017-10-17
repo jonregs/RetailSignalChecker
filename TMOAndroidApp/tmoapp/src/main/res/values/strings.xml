@@ -29,7 +29,7 @@
     <string name="security_options">Security options</string>
 
     <string name="dbg_setting">Debug Settings</string>
-    <string name="diagnostics">Diagnostics</string>
+    <string name="testconfigs">Test Configs</string>
 
     <string name="setting1_name">Setting Name1</string>
     <string name="setting2_name">Setting Name2</string>
