@@ -7,7 +7,7 @@
 
         <variable
             name="userModel"
-            type="com.tmobile.pr.mytmobile.model.UserModel"
+            type="com.tmobile.pr.mytmobile.home.model.UserModel"
             tools:layout_conversion_absoluteHeight="0dp"
             tools:layout_conversion_absoluteWidth="0dp"
             tools:layout_conversion_absoluteX="0dp"

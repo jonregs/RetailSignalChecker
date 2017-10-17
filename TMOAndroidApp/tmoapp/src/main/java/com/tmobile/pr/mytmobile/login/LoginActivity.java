@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.tmobile.pr.mytmobile.R;
-import com.tmobile.pr.mytmobile.home.HomeActivity;
+import com.tmobile.pr.mytmobile.home.view.HomeActivity;
 import com.tmobile.pr.mytmobile.common.BaseActivity;
 
 /**

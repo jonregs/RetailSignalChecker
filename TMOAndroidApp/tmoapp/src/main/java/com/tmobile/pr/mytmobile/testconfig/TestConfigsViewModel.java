@@ -4,19 +4,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.tmobile.pr.mytmobile.testconfig.TestConfigsDataModel.CUSTOM;
 import static com.tmobile.pr.mytmobile.testconfig.TestConfigsDataModel.PROD;
 import static com.tmobile.pr.mytmobile.testconfig.TestConfigsDataModel.SETTING_NAME;
 import static com.tmobile.pr.mytmobile.testconfig.TestConfigsDataModel.URL1;
 import static com.tmobile.pr.mytmobile.testconfig.TestConfigsDataModel.URL2;
-
-/**
- * Created by ckompella on 10/9/17.
- */
 
 public class TestConfigsViewModel {
 
@@ -30,30 +32,26 @@ public class TestConfigsViewModel {
     private TestConfigsDataModel configsDataModel = new TestConfigsDataModel();
 
     private static String DBG_ENV_NAME = "DBG_ENV_NAME";
-    private static String DBG_SETTINGS = "DBG_SETTINGS";
 
-    public Set<String> getConfigNames(){
-        HashMap<String,HashMap<String,String>> map =  configsDataModel.getEnvironmentsObservable().blockingFirst();
-        return map.keySet();
+    public Single<HashMap<String, HashMap<String, String>>> getTestConfigs(final Context context){
+
+        HashMap<String, HashMap<String, String>> map = configsDataModel.getEnvironments();
+        map.put(CUSTOM,getCustomConfigMap(context));
+
+        return Single.just(map);
     }
 
-    public Observable<HashMap<String, HashMap<String, String>>> getConfigSettings(){
-        return configsDataModel.getEnvironmentsObservable();
-    }
+    public  String getLastUsedConfigName(Context context) {
 
-    public  String getCurrentEnvName(Context context) {
-
-        String envName = context.getSharedPreferences(DBG_SETTIGS_SHARED_PREFS,MODE_PRIVATE).getString(DBG_ENV_NAME, PROD);
-        Log.d(TAG, "getCurrentEnvName: "+ envName);
+        String envName = context.getSharedPreferences(DBG_SETTIGS_SHARED_PREFS,MODE_PRIVATE)
+                .getString(DBG_ENV_NAME, PROD);
+        Log.d(TAG, "getLastUsedConfigName: "+ envName);
         return envName;
     }
 
-    public void setCurrentEnvName(Context context, String envName) {
+    public void setLastUsedConfigName(Context context, String envName) {
 
-        if (!getConfigNames().contains(envName.toLowerCase())) {
-            envName = PROD;
-        }
-        Log.d(TAG, "setCurrentEnvName: "+ envName);
+        Log.d(TAG, "setLastUsedConfigName: "+ envName);
 
         SharedPreferences prefs = context.getSharedPreferences(DBG_SETTIGS_SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -61,13 +59,13 @@ public class TestConfigsViewModel {
         editor.commit();
     }
 
-    public void saveCustomConfigData(Context context, String url1, String url2, String configName){
+    public void saveCustomConfigData(Context context, Map<String,String> data){
 
         SharedPreferences prefs = context.getSharedPreferences(DBG_SETTIGS_SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(URL1,url1).apply();
-        editor.putString(URL2, url2).apply();
-        editor.putString(SETTING_NAME, configName);
+        editor.putString(URL1,data.get(URL1));
+        editor.putString(URL2, data.get(URL2));
+        editor.putString(SETTING_NAME, data.get(SETTING_NAME));
         editor.commit();
     }
 

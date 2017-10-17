@@ -3,7 +3,7 @@ package com.tmobile.pr.mytmobile;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 
-import com.tmobile.pr.mytmobile.home.HomeActivity;
+import com.tmobile.pr.mytmobile.home.view.HomeActivity;
 
 import org.junit.After;
 import org.junit.Before;

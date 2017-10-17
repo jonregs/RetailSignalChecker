@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.home;
+package com.tmobile.pr.mytmobile.home.viewmodel;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.tmobile.pr.mytmobile.R;
-import com.tmobile.pr.mytmobile.model.Model;
+import com.tmobile.pr.mytmobile.home.model.Model;
 
 import java.util.List;
 

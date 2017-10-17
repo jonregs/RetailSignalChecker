@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 
 import com.tmobile.pr.mytmobile.R;
-import com.tmobile.pr.mytmobile.model.AnalyticsModel;
+import com.tmobile.pr.mytmobile.home.model.AnalyticsModel;
 
 /**
  * Wrapper class for toolbar

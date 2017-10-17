@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.home;
+package com.tmobile.pr.mytmobile.home.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.tmobile.pr.mytmobile.model.AnalyticsModel;
+import com.tmobile.pr.mytmobile.home.viewmodel.HomeCardAdapter;
+import com.tmobile.pr.mytmobile.home.model.AnalyticsModel;
 import com.tmobile.pr.mytmobile.R;
-import com.tmobile.pr.mytmobile.model.Model;
+import com.tmobile.pr.mytmobile.home.model.Model;
 import com.tmobile.pr.mytmobile.common.BaseActivity;
 import com.tmobile.pr.mytmobile.common.BaseInjectingFragment;
 

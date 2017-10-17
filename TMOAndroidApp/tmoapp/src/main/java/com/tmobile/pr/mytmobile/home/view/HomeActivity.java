@@ -1,4 +1,4 @@
-package com.tmobile.pr.mytmobile.home;
+package com.tmobile.pr.mytmobile.home.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tmobile.pr.mytmobile.common.BaseActivity;
-import com.tmobile.pr.mytmobile.model.AnalyticsModel;
+import com.tmobile.pr.mytmobile.home.view.HomeFragment;
+import com.tmobile.pr.mytmobile.home.model.AnalyticsModel;
 import com.tmobile.pr.mytmobile.BuildConfig;
 import com.tmobile.pr.mytmobile.R;
 import com.tmobile.pr.mytmobile.message.MessageActivity;
@@ -37,6 +38,7 @@ import timber.log.Timber;
 
 public class HomeActivity extends BaseActivity {
     private static final int HOME_DIVIDER_INDEX = 1;
+    private static final String IS_HOME = "isHome";
     private TabLayout tabLayout;
 
     private List<String> optionList = new ArrayList<>();
@@ -109,7 +111,7 @@ public class HomeActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.diagnostics:
+            case R.id.testconfigs:
                 startActivity(new Intent(this, TestConfigsActivity.class));
                 return true;
             default:
@@ -196,7 +198,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getBooleanExtra("isHome", false)) {
+        if (intent.getBooleanExtra(IS_HOME, false)) {
             tabLayout.getTabAt(0).select();
         }
     }
