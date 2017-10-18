@@ -1,1 +1,1 @@
-include ':tmoapp'
+include ':tmoapp', ':tmoapp-tmoid'

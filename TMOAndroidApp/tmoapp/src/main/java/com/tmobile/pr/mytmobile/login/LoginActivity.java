@@ -13,6 +13,7 @@ import com.tmobile.pr.mytmobile.common.BaseActivity;
  */
 
 public class LoginActivity extends BaseActivity {
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
